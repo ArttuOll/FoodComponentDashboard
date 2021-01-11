@@ -5,14 +5,30 @@ import Row from "react-bootstrap/Row";
 import ComponentCard from "./component_card";
 import { BigLabel } from "./utils/styled_texts";
 
-const Body = () => (
-  <div>
-    <MacroComponentsRow />
-  </div>
-);
+function generateComponentRow(title, data) {
+  return () => (
+    <Container>
+      <BigLabel className="mb-3 text-break">{title}</BigLabel>
+      <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
+        {data.map((componentCard) => (
+          <Col className="d-flex justify-content-center">
+            <ComponentCard
+              key={componentCard.title}
+              title={componentCard.title}
+              unit={componentCard.unit}
+              value={componentCard.value}
+              valueSubtitle={componentCard.valueSubtitle}
+            />
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+}
 
-const MacroComponentsRow = () => {
-  const componentCards = [
+const Body = () => {
+  // TODO: Korvaa oikealla, APIsta saatavalla datalla.
+  const macroData = [
     {
       title: "Energia",
       unit: "Kilokaloria",
@@ -39,23 +55,52 @@ const MacroComponentsRow = () => {
     },
   ];
 
+  const vitaminData = [
+    {
+      title: "C-vitamiini",
+      unit: "mg",
+      value: "6800",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "D-vitamiini",
+      unit: "mcg",
+      value: "50",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "A-vitamiini",
+      unit: "mg",
+      value: "45",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "B12-vitamiini",
+      unit: "mg",
+      value: "4",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "B12-vitamiini",
+      unit: "mg",
+      value: "4",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "K-vitamiini",
+      unit: "mcg",
+      value: "20",
+      valueSubtitle: "X % suosituksesta",
+    },
+  ];
+
+  const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", macroData);
+  const VitaminsRow = generateComponentRow("Vitamiinit", vitaminData);
   return (
-    <Container>
-      <BigLabel className="mb-3 text-break">Energiaravintoaineet</BigLabel>
-      <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
-        {componentCards.map((componentCard) => (
-          <Col className="d-flex justify-content-center">
-            <ComponentCard
-              key={componentCard.title}
-              title={componentCard.title}
-              unit={componentCard.unit}
-              value={componentCard.value}
-              valueSubtitle={componentCard.valueSubtitle}
-            />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <div>
+      <MacroComponentsRow />
+      <VitaminsRow />
+    </div>
   );
 };
 
