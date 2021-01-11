@@ -21,4 +21,6 @@ const TextWarning = styled.h6`
   color: #BAB43C;
 `;
 
-export { HiglightedValue, BigLabel, TextAlert, TextOk, TextWarning };
+export {
+  HiglightedValue, BigLabel, TextAlert, TextOk, TextWarning
+};
