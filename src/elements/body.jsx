@@ -3,12 +3,12 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ComponentCard from "./component_card";
-import { BigLabel } from "./utils/styled_texts";
+import { FoodLabel, ComponentLabel } from "./utils/styled_texts";
 
 function generateComponentRow(title, data) {
   return () => (
     <Container>
-      <BigLabel className="mb-3 text-break">{title}</BigLabel>
+      <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
       <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
         {data.map((componentCard) => (
           <Col className="d-flex justify-content-center">
@@ -94,10 +94,13 @@ const Body = () => {
     },
   ];
 
+  // TODO: aseta nimi API:sta saatavan datan perusteella
+  const foodName = "Ruisleipä";
   const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", macroData);
   const VitaminsRow = generateComponentRow("Vitamiinit", vitaminData);
   return (
     <div>
+      <FoodLabel className="text-center">{foodName}</FoodLabel>
       <MacroComponentsRow />
       <VitaminsRow />
     </div>

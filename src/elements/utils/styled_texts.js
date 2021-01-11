@@ -5,7 +5,11 @@ const HiglightedValue = styled.h1`
   color: #65ba41;
 `;
 
-const BigLabel = styled.h2`
+const FoodLabel = styled.h1`
+  font-family: "Trebuchet MS";
+`;
+
+const ComponentLabel = styled.h2`
   font-family: "Verdana";
 `;
 
@@ -21,4 +25,4 @@ const TextWarning = styled.h6`
   color: #bab43c;
 `;
 
-export { HiglightedValue, BigLabel, TextAlert, TextOk, TextWarning };
+export { HiglightedValue, FoodLabel, ComponentLabel, TextAlert, TextOk, TextWarning };
