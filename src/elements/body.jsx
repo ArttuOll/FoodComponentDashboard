@@ -12,36 +12,36 @@ const Body = () => (
 );
 
 const MacroComponentsRow = () => {
-  const componentCards = [{
-    title: "Energia",
-    unit: "Kilokaloria",
-    value: "60",
-    valueSubtitle: "X % suosituksesta",
-  },
-  {
-    title: "Hiilihydraatit",
-    unit: "g / 100 g",
-    value: "20",
-    valueSubtitle: "X % suosituksesta",
-  },
-  {
-    title: "Proteiini",
-    unit: "g / 100 g",
-    value: "45",
-    valueSubtitle: "X % suosituksesta",
-  },
-  {
-    title: "Rasva",
-    unit: "g / 100 g",
-    value: "4",
-    valueSubtitle: "X % suosituksesta",
-  }];
+  const componentCards = [
+    {
+      title: "Energia",
+      unit: "Kilokaloria",
+      value: "60",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "Hiilihydraatit",
+      unit: "g / 100 g",
+      value: "20",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "Proteiini",
+      unit: "g / 100 g",
+      value: "45",
+      valueSubtitle: "X % suosituksesta",
+    },
+    {
+      title: "Rasva",
+      unit: "g / 100 g",
+      value: "4",
+      valueSubtitle: "X % suosituksesta",
+    },
+  ];
 
   return (
     <Container>
-      <BigLabel className="mb-3 text-break">
-        Energiaravintoaineet
-      </BigLabel>
+      <BigLabel className="mb-3 text-break">Energiaravintoaineet</BigLabel>
       <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
         {componentCards.map((componentCard) => (
           <Col className="d-flex justify-content-center">

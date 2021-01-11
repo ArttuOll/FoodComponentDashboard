@@ -10,9 +10,9 @@ const ComponentCard = (props) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{unit}</Card.Subtitle>
-        <Card.Text>
+        <Card.Title>
           <HiglightedValue>{value}</HiglightedValue>
-        </Card.Text>
+        </Card.Title>
         <Card.Subtitle className="mb-2">
           <TextOk>{valueSubtitle}</TextOk>
         </Card.Subtitle>
