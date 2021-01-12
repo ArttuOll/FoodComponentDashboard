@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Body from "./elements/body";
+import Footer from "./elements/footer";
 import Header from "./elements/header";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <Container>
       <Header />
       <Body />
+      <Footer />
     </Container>
   );
 }
