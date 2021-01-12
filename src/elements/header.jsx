@@ -11,6 +11,28 @@ import Navbar from "react-bootstrap/Navbar";
 import styled from "styled-components";
 import logo from "../images/logo.png";
 
+const StyledButton = styled(Button)`
+  :hover {
+    background-color: #4ba227;
+  }
+  :focus {
+    background-color: #4ba227;
+  }
+  :active {
+    background-color: #277406 !important;
+  }
+  background-color: #65ba41;
+  border: 0 none;
+  box-shadow: none;
+`;
+
+const SearchBox = styled(FormControl)`
+  :focus {
+    border-color: #277406;
+  }
+  border-color: #65ba41;
+`;
+
 const Header = () => (
   <Navbar expand="md">
     <Logo />
@@ -29,26 +51,6 @@ const Logo = () => (
 );
 
 const SearchBar = () => {
-  const StyledButton = styled(Button)`
-    :hover {
-      background-color: #4ba227;
-    }
-    :focus {
-      background-color: #4ba227;
-    }
-    :active {
-      background-color: #277406 !important;
-    }
-    background-color: #65ba41;
-    border: 0 none;
-    box-shadow: none;
-  `;
-  const SearchBox = styled(FormControl)`
-    :focus {
-      border-color: #277406;
-    }
-    border-color: #65ba41;
-  `;
   return (
     <Container>
       <InputGroup className="mb-1">
