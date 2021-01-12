@@ -23,22 +23,38 @@ const Header = () => (
 );
 
 const Logo = () => (
-  <Navbar.Brand href="#home">
+  <Navbar.Brand>
     <Image src={logo} fluid />
   </Navbar.Brand>
 );
 
 const SearchBar = () => {
   const StyledButton = styled(Button)`
+    :hover {
+      background-color: #4ba227;
+    }
+    :focus {
+      background-color: #4ba227;
+    }
+    :active {
+      background-color: #277406 !important;
+    }
     background-color: #65ba41;
     border: 0 none;
+    box-shadow: none;
+  `;
+  const SearchBox = styled(FormControl)`
+    :focus {
+      border-color: #277406;
+    }
+    border-color: #65ba41;
   `;
   return (
     <Container>
       <InputGroup className="mb-1">
-        <FormControl type="text" placeholder="Search for a food..." />
+        <SearchBox className="shadow-none" type="text" placeholder="Search for a food..." />
         <InputGroup.Append>
-          <StyledButton>
+          <StyledButton className="shadow-none">
             <FontAwesomeIcon icon={faSearch} />
           </StyledButton>
         </InputGroup.Append>
@@ -49,8 +65,7 @@ const SearchBar = () => {
 
 const NavigationLinks = () => (
   <Nav className="ml-auto">
-    <Nav.Link href="#link1">Link1</Nav.Link>
-    <Nav.Link href="#link2">Link2</Nav.Link>
+    <Nav.Link href="https://github.com/ArttuOll/FoodComponentDashboard">GitHub</Nav.Link>
   </Nav>
 );
 
