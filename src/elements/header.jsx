@@ -67,7 +67,7 @@ const SearchBar = () => {
 
 const NavigationLinks = () => (
   <Nav className="ml-auto">
-    <Nav.Link href="https://github.com/ArttuOll/FoodComponentDashboard">GitHub</Nav.Link>
+    <Nav.Link href={process.env.REACT_APP_REPO_URL}>GitHub</Nav.Link>
   </Nav>
 );
 
