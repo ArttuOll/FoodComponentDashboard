@@ -1,45 +1,47 @@
-import React from "react";
-import styled from "styled-components";
-import InputGroup from "react-bootstrap/InputGroup";
-import Button from "react-bootstrap/Button";
+import { React, useState } from "react";
 import Container from "react-bootstrap/Container";
-import FormControl from "react-bootstrap/FormControl";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import InputGroup from "react-bootstrap/InputGroup";
+import { TextAlert } from "../utils/styled_texts";
+import AutocompleteInput from "./autocomplete_input";
+import { SearchBox, SearchButton } from "./search_bar_styled_components";
 
-const StyledButton = styled(Button)`
-  :hover {
-    background-color: #4ba227;
-  }
-  :focus {
-    background-color: #4ba227;
-  }
-  :active {
-    background-color: #277406 !important;
-  }
-  background-color: #65ba41;
-  border: 0 none;
-  box-shadow: none;
-`;
-
-const SearchBox = styled(FormControl)`
-  :focus {
-    border-color: #277406;
-  }
-  border-color: #65ba41;
-`;
+const API_URL = process.env.REACT_APP_URL;
 
 const SearchBar = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const fetchFoodNames = async () => {
+    try {
+      const response = await fetch(`${API_URL}/?q=${searchQuery}`);
+      const responseJson = await response.json();
+      setSearchResults(responseJson.result);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage(`Error fetching search suggestions: ${error}`);
+    }
+  };
+
+  const onSearchInputChanged = (event) => {
+    event.preventDefault();
+    setSearchQuery(event.target.value);
+    if (searchQuery.length >= 4) {
+      fetchFoodNames();
+    }
+  };
+
   return (
     <Container>
       <InputGroup className="mb-1">
-        <SearchBox className="shadow-none" type="text" placeholder="Search for a food..." />
+        <SearchBox onSearchInputChanged={onSearchInputChanged}>
+          <AutocompleteInput searchQuery={searchQuery} searchResults={searchResults} />
+        </SearchBox>
         <InputGroup.Append>
-          <StyledButton className="shadow-none">
-            <FontAwesomeIcon icon={faSearch} />
-          </StyledButton>
+          <SearchButton />
         </InputGroup.Append>
       </InputGroup>
+      <TextAlert>{errorMessage}</TextAlert>
     </Container>
   );
 };
