@@ -11,12 +11,12 @@ function generateComponentRow(title, data) {
       <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
       <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
         {data.map((componentCard) => (
-          <Col className="d-flex justify-content-center">
+          <Col key={componentCard.title} className="d-flex justify-content-center">
             <ComponentCard
               key={componentCard.title}
               title={componentCard.title}
               unit={componentCard.unit}
-              value={componentCard.value}
+              value={parseInt(componentCard.value, 10)}
               valueSubtitle={componentCard.valueSubtitle}
             />
           </Col>
@@ -81,12 +81,6 @@ const Body = () => {
       valueSubtitle: "X % suosituksesta",
     },
     {
-      title: "B12-vitamiini",
-      unit: "mg",
-      value: "4",
-      valueSubtitle: "X % suosituksesta",
-    },
-    {
       title: "K-vitamiini",
       unit: "mcg",
       value: "20",
@@ -99,11 +93,11 @@ const Body = () => {
   const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", macroData);
   const VitaminsRow = generateComponentRow("Vitamiinit", vitaminData);
   return (
-    <div>
+    <>
       <FoodLabel className="text-center">{foodName}</FoodLabel>
       <MacroComponentsRow />
       <VitaminsRow />
-    </div>
+    </>
   );
 };
 
