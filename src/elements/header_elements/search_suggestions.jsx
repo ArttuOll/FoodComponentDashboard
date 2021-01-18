@@ -1,33 +1,32 @@
 import Proptypes from "prop-types";
 import { React, useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
+import { SuggestionsList } from "./search_bar_styled_components";
 
-const AutocompleteInput = (props) => {
+const SearchSuggestions = (props) => {
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(true);
   const { searchResults, searchQuery } = props;
 
   useEffect(() => {
-    const filteredSearchResults = searchResults.filter((suggestion) =>
-      suggestion.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filteredSearchResults = searchResults
+      .filter((suggestion) => suggestion.name.toLowerCase().includes(searchQuery.toLowerCase()))
+      .slice(1, 5);
     setSuggestions(filteredSearchResults);
-    setShowSuggestions(true);
   }, [searchResults, searchQuery]);
 
   return (
-    <ListGroup>
+    <SuggestionsList className="mx-auto px-4">
       {suggestions.map((suggestion) => (
-        <ListGroup.Item>{suggestion}</ListGroup.Item>
+        <ListGroup.Item key={suggestion.name}>{suggestion.name}</ListGroup.Item>
       ))}
-    </ListGroup>
+    </SuggestionsList>
   );
 };
 
-AutocompleteInput.propTypes = {
+SearchSuggestions.propTypes = {
   searchResults: Proptypes.arrayOf(Proptypes.object).isRequired,
   searchQuery: Proptypes.string.isRequired,
 };
 
-export default AutocompleteInput;
+export default SearchSuggestions;

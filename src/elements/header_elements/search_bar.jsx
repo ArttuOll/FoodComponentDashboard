@@ -1,8 +1,10 @@
 import { React, useState } from "react";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import { TextAlert } from "../utils/styled_texts";
-import AutocompleteInput from "./autocomplete_input";
+import SearchSuggestions from "./search_suggestions";
 import { SearchBox, SearchButton } from "./search_bar_styled_components";
 
 const API_URL = process.env.REACT_APP_URL;
@@ -33,15 +35,18 @@ const SearchBar = () => {
 
   return (
     <Container>
-      <InputGroup className="mb-1">
-        <SearchBox onSearchInputChanged={onSearchInputChanged}>
-          <AutocompleteInput searchQuery={searchQuery} searchResults={searchResults} />
-        </SearchBox>
-        <InputGroup.Append>
-          <SearchButton />
-        </InputGroup.Append>
-      </InputGroup>
-      <TextAlert>{errorMessage}</TextAlert>
+      <Row className="w-100">
+        <Col>
+          <InputGroup className="mb-1">
+            <SearchBox onSearchInputChanged={onSearchInputChanged} />
+            <InputGroup.Append>
+              <SearchButton />
+            </InputGroup.Append>
+          </InputGroup>
+          <SearchSuggestions searchQuery={searchQuery} searchResults={searchResults} />
+        </Col>
+        <TextAlert>{errorMessage}</TextAlert>
+      </Row>
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Proptypes from "prop-types";
 import React from "react";
+import { ListGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import styled from "styled-components";
@@ -52,4 +53,10 @@ const SearchButton = () => {
   );
 };
 
-export { SearchButton, SearchBox };
+const SuggestionsList = styled(ListGroup)`
+  position: absolute;
+  z-index: 99;
+  top: 100%;
+`;
+
+export { SearchButton, SearchBox, SuggestionsList };
