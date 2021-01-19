@@ -33,17 +33,25 @@ const SearchBar = () => {
     }
   };
 
+  const onSearchSuggestionClick = (event) => {
+    setSearchQuery(event.currentTarget.innerText);
+  };
+
   return (
     <Container>
       <Row className="w-100">
         <Col>
           <InputGroup className="mb-1">
-            <SearchBox onSearchInputChanged={onSearchInputChanged} />
+            <SearchBox searchQuery={searchQuery} onSearchInputChanged={onSearchInputChanged} />
             <InputGroup.Append>
               <SearchButton />
             </InputGroup.Append>
           </InputGroup>
-          <SearchSuggestions searchQuery={searchQuery} searchResults={searchResults} />
+          <SearchSuggestions
+            onClick={onSearchSuggestionClick}
+            searchQuery={searchQuery}
+            searchResults={searchResults}
+          />
         </Col>
         <TextAlert>{errorMessage}</TextAlert>
       </Row>

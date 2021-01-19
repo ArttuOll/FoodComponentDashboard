@@ -6,7 +6,7 @@ import { SuggestionsList } from "./search_bar_styled_components";
 const SearchSuggestions = (props) => {
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [suggestions, setSuggestions] = useState([]);
-  const { searchResults, searchQuery } = props;
+  const { searchResults, searchQuery, onClick } = props;
 
   useEffect(() => {
     const filteredSearchResults = searchResults
@@ -18,7 +18,9 @@ const SearchSuggestions = (props) => {
   return (
     <SuggestionsList className="mx-auto px-4">
       {suggestions.map((suggestion) => (
-        <ListGroup.Item key={suggestion.name}>{suggestion.name}</ListGroup.Item>
+        <ListGroup.Item onClick={onClick} key={suggestion.name}>
+          {suggestion.name}
+        </ListGroup.Item>
       ))}
     </SuggestionsList>
   );
@@ -27,6 +29,7 @@ const SearchSuggestions = (props) => {
 SearchSuggestions.propTypes = {
   searchResults: Proptypes.arrayOf(Proptypes.object).isRequired,
   searchQuery: Proptypes.string.isRequired,
+  onClick: Proptypes.func.isRequired,
 };
 
 export default SearchSuggestions;
