@@ -5,6 +5,7 @@ import { SuggestionsList } from "./search_bar_styled_components";
 
 const SearchSuggestions = (props) => {
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
+  const [activeSuggestionName, setActiveSuggestionName] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const { searchResults, searchQuery, onClick } = props;
 
@@ -15,10 +16,23 @@ const SearchSuggestions = (props) => {
     setSuggestions(filteredSearchResults);
   }, [searchResults, searchQuery]);
 
+  const onMouseOver = (event) => {
+    setActiveSuggestionName(event.currentTarget.innerText);
+  };
+
+  const getActivityStatus = (suggestion) => {
+    return activeSuggestionName === suggestion.name ? "active" : "";
+  };
+
   return (
     <SuggestionsList className="mx-auto px-4">
       {suggestions.map((suggestion) => (
-        <ListGroup.Item onClick={onClick} key={suggestion.name}>
+        <ListGroup.Item
+          className={getActivityStatus(suggestion)}
+          onMouseOver={onMouseOver}
+          onClick={onClick}
+          key={suggestion.name}
+        >
           {suggestion.name}
         </ListGroup.Item>
       ))}
