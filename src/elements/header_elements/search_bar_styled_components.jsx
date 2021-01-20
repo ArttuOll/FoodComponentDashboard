@@ -15,7 +15,7 @@ const StyledFormControl = styled(FormControl)`
 `;
 
 const SearchBox = (props) => {
-  const { onSearchInputChanged, searchQuery } = props;
+  const { onSearchInputChanged, searchQuery, onKeyDown } = props;
   return (
     <StyledFormControl
       onChange={onSearchInputChanged}
@@ -23,6 +23,7 @@ const SearchBox = (props) => {
       type="text"
       placeholder="Search for a food..."
       value={searchQuery}
+      onKeyDown={onKeyDown}
     />
   );
 };
@@ -30,6 +31,7 @@ const SearchBox = (props) => {
 SearchBox.propTypes = {
   onSearchInputChanged: Proptypes.func.isRequired,
   searchQuery: Proptypes.string.isRequired,
+  onKeyDown: Proptypes.func.isRequired,
 };
 
 const StyledButton = styled(Button)`

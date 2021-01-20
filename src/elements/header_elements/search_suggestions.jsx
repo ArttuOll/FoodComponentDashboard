@@ -1,24 +1,10 @@
 import Proptypes from "prop-types";
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import { ListGroup } from "react-bootstrap";
 import { SuggestionsList } from "./search_bar_styled_components";
 
 const SearchSuggestions = (props) => {
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
-  const [activeSuggestionName, setActiveSuggestionName] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const { searchResults, searchQuery, onClick } = props;
-
-  useEffect(() => {
-    const filteredSearchResults = searchResults
-      .filter((suggestion) => suggestion.name.toLowerCase().includes(searchQuery.toLowerCase()))
-      .slice(1, 5);
-    setSuggestions(filteredSearchResults);
-  }, [searchResults, searchQuery]);
-
-  const onMouseOver = (event) => {
-    setActiveSuggestionName(event.currentTarget.innerText);
-  };
+  const { suggestions, onClick, onMouseOver, activeSuggestionName } = props;
 
   const getActivityStatus = (suggestion) => {
     return activeSuggestionName === suggestion.name ? "active" : "";
@@ -41,9 +27,10 @@ const SearchSuggestions = (props) => {
 };
 
 SearchSuggestions.propTypes = {
-  searchResults: Proptypes.arrayOf(Proptypes.object).isRequired,
-  searchQuery: Proptypes.string.isRequired,
+  suggestions: Proptypes.arrayOf(Proptypes.object).isRequired,
   onClick: Proptypes.func.isRequired,
+  onMouseOver: Proptypes.func.isRequired,
+  activeSuggestionName: Proptypes.string.isRequired,
 };
 
 export default SearchSuggestions;

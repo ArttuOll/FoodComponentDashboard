@@ -40,7 +40,8 @@
           "quotes": 0,
           "comma-dangle": 0,
           "react-hooks/rules-of-hooks": "error",
-          "react-hooks/exhaustive-deps": "warn"
+          "react-hooks/exhaustive-deps": "warn",
+          "react/jsx-curly-newline": "off"
         }
       }
     ]
