@@ -1,6 +1,6 @@
 import Proptypes from "prop-types";
 import { React } from "react";
-import { SuggestionsList, SuggestionsListItem } from "./search_bar_styled_components";
+import { SuggestionsList, SuggestionsListItem } from "./search_bar/search_bar_styled_components";
 
 const SearchSuggestions = (props) => {
   const { onClick, onMouseOver, suggestionState } = props;

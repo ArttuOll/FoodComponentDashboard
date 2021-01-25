@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import SearchBar from "./header_elements/search_bar";
-import { Logo, NavigationLinks } from "./header_elements/decorations";
+import SearchBar from "./components/search_bar/search_bar";
+import { Logo, NavigationLinks } from "./components/decorations";
 
 const Header = () => {
   return (

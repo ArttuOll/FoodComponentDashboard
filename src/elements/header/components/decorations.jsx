@@ -2,7 +2,7 @@ import React from "react";
 import Image from "react-bootstrap/Image";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../../images/logo.png";
+import logo from "../../../images/logo.png";
 
 const Logo = () => (
   <Navbar.Brand>

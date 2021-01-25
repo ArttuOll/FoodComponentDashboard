@@ -1,4 +1,4 @@
-import fetchFoodNames from "./network_utils";
+import fetchFoodNames from "../../../utils/network_utils";
 
 const NUMBER_OF_SUGGESTIONS = 5;
 const FETCHING_LIMIT = 4;

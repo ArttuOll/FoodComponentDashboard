@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Proptypes from "prop-types";
-import { HiglightedValue, TextOk } from "./utils/styled_texts";
+import { HiglightedValue, TextOk } from "../utils/styled_texts";
 
 const ComponentCard = (props) => {
   const { title, unit, value, valueSubtitle } = props;

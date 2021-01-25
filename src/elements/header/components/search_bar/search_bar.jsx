@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
-import { TextAlert } from "../utils/styled_texts";
-import SearchSuggestions from "./search_suggestions";
+import { TextAlert } from "../../../utils/styled_texts";
+import SearchSuggestions from "../search_suggestions";
 import { SearchBox, SearchButton } from "./search_bar_styled_components";
 import {
   onMouseOver,
