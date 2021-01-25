@@ -63,4 +63,9 @@ const SuggestionsList = styled(ListGroup)`
   top: 100%;
 `;
 
-export { SearchButton, SearchBox, SuggestionsList };
+const SuggestionsListItem = styled(ListGroup.Item)`
+  background-color: ${(props) => (props.$activityStatus ? "#65ba41" : "ffffff")};
+  color: ${(props) => (props.$activityStatus ? "#ffffff" : "000000")};
+`;
+
+export { SearchButton, SearchBox, SuggestionsList, SuggestionsListItem };

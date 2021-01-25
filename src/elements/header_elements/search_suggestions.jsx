@@ -1,36 +1,40 @@
 import Proptypes from "prop-types";
 import { React } from "react";
-import { ListGroup } from "react-bootstrap";
-import { SuggestionsList } from "./search_bar_styled_components";
+import { SuggestionsList, SuggestionsListItem } from "./search_bar_styled_components";
 
 const SearchSuggestions = (props) => {
-  const { suggestions, onClick, onMouseOver, activeSuggestionName } = props;
+  const { onClick, onMouseOver, suggestionState } = props;
 
   const getActivityStatus = (suggestion) => {
-    return activeSuggestionName === suggestion.name ? "active" : "";
+    return suggestionState.activeName === suggestion.name;
   };
 
   return (
     <SuggestionsList className="mx-auto px-4">
-      {suggestions.map((suggestion) => (
-        <ListGroup.Item
-          className={getActivityStatus(suggestion)}
+      {suggestionState.suggestions.map((suggestion) => (
+        <SuggestionsListItem
+          $activityStatus={getActivityStatus(suggestion)}
           onMouseOver={onMouseOver}
           onClick={onClick}
           key={suggestion.name}
         >
           {suggestion.name}
-        </ListGroup.Item>
+        </SuggestionsListItem>
       ))}
     </SuggestionsList>
   );
 };
 
 SearchSuggestions.propTypes = {
-  suggestions: Proptypes.arrayOf(Proptypes.object).isRequired,
+  suggestionState: Proptypes.shape({
+    suggestions: Proptypes.arrayOf(
+      Proptypes.shape({ id: Proptypes.number, name: Proptypes.string })
+    ),
+    activeName: Proptypes.string,
+    activeIndex: Proptypes.number,
+  }).isRequired,
   onClick: Proptypes.func.isRequired,
   onMouseOver: Proptypes.func.isRequired,
-  activeSuggestionName: Proptypes.string.isRequired,
 };
 
 export default SearchSuggestions;

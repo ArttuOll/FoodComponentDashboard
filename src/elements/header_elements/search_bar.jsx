@@ -63,8 +63,7 @@ const SearchBar = () => {
             onMouseOver={(event) => onMouseOver(event, suggestionState, setSuggestionState)}
             searchQuery={searchQuery}
             searchResults={searchResults}
-            activeSuggestionName={suggestionState.activeName}
-            suggestions={suggestionState.suggestions}
+            suggestionState={suggestionState}
           />
         </Col>
         <TextAlert>{errorMessage}</TextAlert>
