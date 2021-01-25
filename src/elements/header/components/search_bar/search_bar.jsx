@@ -22,16 +22,27 @@ const SearchBar = () => {
     suggestions: [],
     activeIndex: -1,
     activeName: "",
+    visible: false,
   });
 
   useEffect(() => {
-    const filteredSearchResults = searchResults
-      .filter((suggestion) => suggestion.name.toLowerCase().includes(searchQuery.toLowerCase()))
-      .slice(1, NUMBER_OF_SUGGESTIONS + 1);
-    setSuggestionState((currentState) => ({
-      ...currentState,
-      suggestions: filteredSearchResults,
-    }));
+    const setSuggestionVisibility = () => {
+      const suggestionsVisible = searchQuery.length >= NUMBER_OF_SUGGESTIONS;
+      setSuggestionState((currentState) => ({ ...currentState, visible: suggestionsVisible }));
+    };
+
+    const setSuggestions = () => {
+      const filteredSearchResults = searchResults
+        .filter((suggestion) => suggestion.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        .slice(1, NUMBER_OF_SUGGESTIONS + 1);
+      setSuggestionState((currentState) => ({
+        ...currentState,
+        suggestions: filteredSearchResults,
+      }));
+    };
+
+    setSuggestionVisibility();
+    setSuggestions();
   }, [searchResults, searchQuery]);
 
   return (
@@ -58,13 +69,15 @@ const SearchBar = () => {
               <SearchButton />
             </InputGroup.Append>
           </InputGroup>
-          <SearchSuggestions
-            onClick={(event) => onSearchSuggestionClick(event, setSearchQuery)}
-            onMouseOver={(event) => onMouseOver(event, suggestionState, setSuggestionState)}
-            searchQuery={searchQuery}
-            searchResults={searchResults}
-            suggestionState={suggestionState}
-          />
+          {suggestionState.visible && (
+            <SearchSuggestions
+              onClick={(event) => onSearchSuggestionClick(event, setSearchQuery)}
+              onMouseOver={(event) => onMouseOver(event, suggestionState, setSuggestionState)}
+              searchQuery={searchQuery}
+              searchResults={searchResults}
+              suggestionState={suggestionState}
+            />
+          )}
         </Col>
         <TextAlert>{errorMessage}</TextAlert>
       </Row>
