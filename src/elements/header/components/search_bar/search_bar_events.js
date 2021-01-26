@@ -11,22 +11,20 @@ const onMouseOver = (event, suggestionState, setSuggestionState) => {
   setSuggestionState((currentState) => ({ ...currentState, activeName }));
 };
 
-const onSearchInputChanged = (
-  event,
-  searchQuery,
-  setSearchQuery,
-  setSearchResults,
-  setErrorMessage
-) => {
+const onSearchInputChanged = (event, searchState, setSearchState, setErrorMessage) => {
   event.preventDefault();
-  setSearchQuery(event.target.value);
-  if (searchQuery.length >= FETCHING_LIMIT) {
-    fetchFoodNames(searchQuery, setSearchResults, setErrorMessage);
+  setSearchState((currentState) => ({ ...currentState, searchQuery: event.target.value }));
+
+  const { searchQuery, fetchingQuery } = searchState;
+  if (searchQuery.length === FETCHING_LIMIT && searchQuery !== fetchingQuery) {
+    fetchFoodNames(searchQuery, setSearchState, setErrorMessage);
+    setSearchState((currentState) => ({ ...currentState, fetchingQuery: searchQuery }));
   }
 };
 
-const onSearchSuggestionClick = (event, setSearchQuery) => {
-  setSearchQuery(event.currentTarget.innerText);
+const onSearchSuggestionClick = (event, setSearchState) => {
+  const searchQuery = event.currentTarget.innerText;
+  setSearchState((currentState) => ({ ...currentState, searchQuery }));
 };
 
 const setNextActiveSuggestion = (suggestionState, setSuggestionState) => {
@@ -54,7 +52,7 @@ const nextSuggestionNotOverLimit = (suggestionState) =>
 
 const previousSuggestionNotUnderZero = (suggestionState) => suggestionState.activeIndex - 1 >= 0;
 
-const onKeyDown = (event, suggestionState, setSuggestionState, setSearchQuery) => {
+const onKeyDown = (event, suggestionState, setSuggestionState, searchState, setSearchState) => {
   switch (event.keyCode) {
     case KEY_DOWN:
       if (nextSuggestionNotOverLimit(suggestionState)) {
@@ -67,7 +65,10 @@ const onKeyDown = (event, suggestionState, setSuggestionState, setSearchQuery) =
       }
       break;
     case KEY_ENTER:
-      setSearchQuery(suggestionState.suggestions[suggestionState.activeIndex].name);
+      setSearchState((currentState) => ({
+        ...currentState,
+        searchQuery: suggestionState.suggestions[suggestionState.activeIndex].name,
+      }));
       break;
     default:
       break;

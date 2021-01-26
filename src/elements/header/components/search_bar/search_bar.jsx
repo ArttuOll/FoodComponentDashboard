@@ -15,9 +15,12 @@ import {
 } from "./search_bar_events";
 
 const SearchBar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchState, setSearchState] = useState({
+    searchQuery: "",
+    fetchedQuery: "",
+    searchResults: [],
+  });
   const [suggestionState, setSuggestionState] = useState({
     suggestions: [],
     activeIndex: -1,
@@ -27,14 +30,17 @@ const SearchBar = () => {
 
   useEffect(() => {
     const setSuggestionVisibility = () => {
-      const suggestionsVisible = searchQuery.length >= NUMBER_OF_SUGGESTIONS;
+      const suggestionsVisible = searchState.searchQuery.length >= NUMBER_OF_SUGGESTIONS;
       setSuggestionState((currentState) => ({ ...currentState, visible: suggestionsVisible }));
     };
 
     const setSuggestions = () => {
-      const filteredSearchResults = searchResults
-        .filter((suggestion) => suggestion.name.toLowerCase().includes(searchQuery.toLowerCase()))
+      const filteredSearchResults = searchState.searchResults
+        .filter((suggestion) =>
+          suggestion.name.toLowerCase().includes(searchState.searchQuery.toLowerCase())
+        )
         .slice(1, NUMBER_OF_SUGGESTIONS + 1);
+
       setSuggestionState((currentState) => ({
         ...currentState,
         suggestions: filteredSearchResults,
@@ -43,7 +49,7 @@ const SearchBar = () => {
 
     setSuggestionVisibility();
     setSuggestions();
-  }, [searchResults, searchQuery]);
+  }, [searchState]);
 
   return (
     <Container>
@@ -52,17 +58,11 @@ const SearchBar = () => {
           <InputGroup className="mb-1">
             <SearchBox
               onKeyDown={(event) =>
-                onKeyDown(event, suggestionState, setSuggestionState, setSearchQuery)
+                onKeyDown(event, suggestionState, setSuggestionState, searchState, setSearchState)
               }
-              searchQuery={searchQuery}
+              searchQuery={searchState.searchQuery}
               onSearchInputChanged={(event) =>
-                onSearchInputChanged(
-                  event,
-                  searchQuery,
-                  setSearchQuery,
-                  setSearchResults,
-                  setErrorMessage
-                )
+                onSearchInputChanged(event, searchState, setSearchState, setErrorMessage)
               }
             />
             <InputGroup.Append>
@@ -71,10 +71,10 @@ const SearchBar = () => {
           </InputGroup>
           {suggestionState.visible && (
             <SearchSuggestions
-              onClick={(event) => onSearchSuggestionClick(event, setSearchQuery)}
+              onClick={(event) => onSearchSuggestionClick(event, setSearchState)}
               onMouseOver={(event) => onMouseOver(event, suggestionState, setSuggestionState)}
-              searchQuery={searchQuery}
-              searchResults={searchResults}
+              searchQuery={searchState.searchQuery}
+              searchResults={searchState.searchResults}
               suggestionState={suggestionState}
             />
           )}
