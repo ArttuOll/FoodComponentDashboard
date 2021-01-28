@@ -1,4 +1,4 @@
-import fetchFoodNames from "../../../utils/network_utils";
+import fetchFoodNames from "elements/utils/network_utils";
 
 const NUMBER_OF_SUGGESTIONS = 5;
 const FETCHING_LIMIT = 4;
@@ -11,12 +11,16 @@ const onMouseOver = (event, suggestionState, setSuggestionState) => {
   setSuggestionState((currentState) => ({ ...currentState, activeName }));
 };
 
+const fetchingAllowed = (searchQuery, fetchingQuery) => {
+  return searchQuery.length === FETCHING_LIMIT && searchQuery !== fetchingQuery;
+};
+
 const onSearchInputChanged = (event, searchState, setSearchState, setErrorMessage) => {
   event.preventDefault();
   setSearchState((currentState) => ({ ...currentState, searchQuery: event.target.value }));
 
   const { searchQuery, fetchingQuery } = searchState;
-  if (searchQuery.length === FETCHING_LIMIT && searchQuery !== fetchingQuery) {
+  if (fetchingAllowed(searchQuery, fetchingQuery)) {
     fetchFoodNames(searchQuery, setSearchState, setErrorMessage);
     setSearchState((currentState) => ({ ...currentState, fetchingQuery: searchQuery }));
   }

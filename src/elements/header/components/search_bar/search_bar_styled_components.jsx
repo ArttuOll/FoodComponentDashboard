@@ -14,8 +14,7 @@ const StyledFormControl = styled(FormControl)`
   border-color: #65ba41;
 `;
 
-const SearchBox = (props) => {
-  const { onSearchInputChanged, searchQuery, onKeyDown } = props;
+const SearchBox = ({ onSearchInputChanged, searchQuery, onKeyDown }) => {
   return (
     <StyledFormControl
       onChange={onSearchInputChanged}

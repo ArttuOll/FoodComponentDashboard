@@ -2,8 +2,8 @@ import React from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import ComponentCard from "./component_card";
-import { FoodLabel, ComponentLabel } from "../utils/styled_texts";
+import ComponentCard from "elements/body/component_card";
+import { FoodLabel, ComponentLabel } from "elements/utils/styled_texts";
 
 function generateComponentRow(title, data) {
   return () => (

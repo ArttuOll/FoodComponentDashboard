@@ -1,10 +1,11 @@
 import Proptypes from "prop-types";
 import { React } from "react";
-import { SuggestionsList, SuggestionsListItem } from "./search_bar/search_bar_styled_components";
+import {
+  SuggestionsList,
+  SuggestionsListItem,
+} from "elements/header/components/search_bar/search_bar_styled_components";
 
-const SearchSuggestions = (props) => {
-  const { onClick, onMouseOver, suggestionState } = props;
-
+const SearchSuggestions = ({ onClick, onMouseOver, suggestionState }) => {
   const getActivityStatus = (suggestion) => {
     return suggestionState.activeName === suggestion.name;
   };
