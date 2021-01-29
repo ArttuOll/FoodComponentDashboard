@@ -1,0 +1,13 @@
+{
+  "configurations": {
+    "launch": {
+      "adapter": "chrome",
+      "configuration": {
+        "request": "launch",
+        "url": "http://localhost:3000/",
+        "runtimeExecutable": "/snap/bin/chromium",
+        "runtimeArgs": ["--remote-debugging-port=9222", "-disable-web-security", "--user-data-dir=/tmp/chromium_dev"]
+      }
+    }
+  }
+}
