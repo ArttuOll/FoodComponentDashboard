@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useReducer } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,6 +9,7 @@ import {
   SearchBox,
   SearchButton,
 } from "elements/header/components/search_bar/search_bar_styled_components";
+
 import {
   onMouseOver,
   onSearchInputChanged,
@@ -17,42 +18,39 @@ import {
   NUMBER_OF_SUGGESTIONS,
 } from "elements/header/components/search_bar/search_bar_events";
 
+import {
+  ACTIONS,
+  reducer,
+  initialState,
+} from "elements/header/components/search_bar/search_bar_reducer";
+
 const SearchBar = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [errorMessage, setErrorMessage] = useState("");
-  const [searchState, setSearchState] = useState({
-    searchQuery: "",
-    fetchedQuery: "",
-    searchResults: [],
-  });
-  const [suggestionState, setSuggestionState] = useState({
-    suggestions: [],
-    activeIndex: -1,
-    activeName: "",
-    visible: false,
-  });
 
   useEffect(() => {
     const setSuggestionVisibility = () => {
-      const suggestionsVisible = searchState.searchQuery.length >= NUMBER_OF_SUGGESTIONS;
-      setSuggestionState((currentState) => ({ ...currentState, visible: suggestionsVisible }));
+      const suggestionsVisible = state.searchQuery.length >= NUMBER_OF_SUGGESTIONS;
+      if (suggestionsVisible) {
+        dispatch({ type: ACTIONS.SHOW_SUGGESTIONS });
+      } else {
+        dispatch({ type: ACTIONS.HIDE_SUGGESTIONS });
+      }
     };
 
     const setSuggestions = () => {
-      const filteredSearchResults = searchState.searchResults
+      const filteredSearchResults = state.searchResults
         .filter((suggestion) =>
-          suggestion.name.toLowerCase().includes(searchState.searchQuery.toLowerCase())
+          suggestion.name.toLowerCase().includes(state.searchQuery.toLowerCase())
         )
         .slice(1, NUMBER_OF_SUGGESTIONS + 1);
 
-      setSuggestionState((currentState) => ({
-        ...currentState,
-        suggestions: filteredSearchResults,
-      }));
+      dispatch({ type: ACTIONS.SET_SUGGESTIONS, payload: { suggestions: filteredSearchResults } });
     };
 
     setSuggestionVisibility();
     setSuggestions();
-  }, [searchState]);
+  }, [state.searchQuery, state.searchResults]);
 
   return (
     <Container>
@@ -60,25 +58,21 @@ const SearchBar = () => {
         <Col>
           <InputGroup className="mb-1">
             <SearchBox
-              onKeyDown={(event) =>
-                onKeyDown(event, suggestionState, setSuggestionState, searchState, setSearchState)
-              }
-              searchQuery={searchState.searchQuery}
+              onKeyDown={(event) => onKeyDown(event, state, dispatch)}
+              searchQuery={state.searchQuery}
               onSearchInputChanged={(event) =>
-                onSearchInputChanged(event, searchState, setSearchState, setErrorMessage)
+                onSearchInputChanged(event, state, dispatch, setErrorMessage)
               }
             />
             <InputGroup.Append>
               <SearchButton />
             </InputGroup.Append>
           </InputGroup>
-          {suggestionState.visible ? (
+          {state.suggestionsVisible ? (
             <SearchSuggestions
-              onClick={(event) => onSearchSuggestionClick(event, setSearchState)}
-              onMouseOver={(event) => onMouseOver(event, suggestionState, setSuggestionState)}
-              searchQuery={searchState.searchQuery}
-              searchResults={searchState.searchResults}
-              suggestionState={suggestionState}
+              onClick={(event) => onSearchSuggestionClick(event, dispatch)}
+              onMouseOver={(event) => onMouseOver(event, state, dispatch)}
+              state={state}
             />
           ) : null}
         </Col>

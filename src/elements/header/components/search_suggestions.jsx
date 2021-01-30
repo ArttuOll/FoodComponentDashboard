@@ -5,14 +5,14 @@ import {
   SuggestionsListItem,
 } from "elements/header/components/search_bar/search_bar_styled_components";
 
-const SearchSuggestions = ({ onClick, onMouseOver, suggestionState }) => {
+const SearchSuggestions = ({ onClick, onMouseOver, state }) => {
   const getActivityStatus = (suggestion) => {
-    return suggestionState.activeName === suggestion.name;
+    return state.activeSuggestionName === suggestion.name;
   };
 
   return (
     <SuggestionsList className="mx-auto px-4">
-      {suggestionState.suggestions.map((suggestion) => (
+      {state.suggestions.map((suggestion) => (
         <SuggestionsListItem
           $activityStatus={getActivityStatus(suggestion)}
           onMouseOver={onMouseOver}
@@ -27,12 +27,12 @@ const SearchSuggestions = ({ onClick, onMouseOver, suggestionState }) => {
 };
 
 SearchSuggestions.propTypes = {
-  suggestionState: Proptypes.shape({
+  state: Proptypes.shape({
     suggestions: Proptypes.arrayOf(
       Proptypes.shape({ id: Proptypes.number, name: Proptypes.string })
     ),
-    activeName: Proptypes.string,
-    activeIndex: Proptypes.number,
+    activeSuggestionName: Proptypes.string,
+    activeSuggestionIndex: Proptypes.number,
   }).isRequired,
   onClick: Proptypes.func.isRequired,
   onMouseOver: Proptypes.func.isRequired,

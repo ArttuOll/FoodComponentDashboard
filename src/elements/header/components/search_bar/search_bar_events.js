@@ -1,4 +1,5 @@
 import fetchFoodNames from "elements/utils/network_utils";
+import { ACTIONS } from "elements/header/components/search_bar/search_bar_reducer";
 
 const NUMBER_OF_SUGGESTIONS = 5;
 const FETCHING_LIMIT = 4;
@@ -6,73 +7,53 @@ const KEY_DOWN = 40;
 const KEY_UP = 38;
 const KEY_ENTER = 13;
 
-const onMouseOver = (event, suggestionState, setSuggestionState) => {
-  const activeName = event.target.innerText;
-  setSuggestionState((currentState) => ({ ...currentState, activeName }));
+const onMouseOver = (event, state, dispatch) => {
+  const activeSuggestionName = event.target.innerText;
+  dispatch({ type: ACTIONS.SET_ACTIVE_SUGGESTION, payload: { activeSuggestionName } });
 };
 
 const fetchingAllowed = (searchQuery, fetchingQuery) => {
   return searchQuery.length === FETCHING_LIMIT && searchQuery !== fetchingQuery;
 };
 
-const onSearchInputChanged = (event, searchState, setSearchState, setErrorMessage) => {
+const onSearchInputChanged = (event, state, dispatch, setErrorMessage) => {
   event.preventDefault();
-  setSearchState((currentState) => ({ ...currentState, searchQuery: event.target.value }));
+  dispatch({ type: ACTIONS.SET_SEARCH_QUERY, payload: { searchQuery: event.target.value } });
 
-  const { searchQuery, fetchingQuery } = searchState;
+  const { searchQuery, fetchingQuery } = state;
   if (fetchingAllowed(searchQuery, fetchingQuery)) {
-    fetchFoodNames(searchQuery, setSearchState, setErrorMessage);
-    setSearchState((currentState) => ({ ...currentState, fetchingQuery: searchQuery }));
+    fetchFoodNames(searchQuery, dispatch, setErrorMessage);
+    dispatch({ type: ACTIONS.SET_FETCHING_QUERY, payload: { fetchingQuery: searchQuery } });
   }
 };
 
-const onSearchSuggestionClick = (event, setSearchState) => {
+const onSearchSuggestionClick = (event, dispatch) => {
   const searchQuery = event.currentTarget.innerText;
-  setSearchState((currentState) => ({ ...currentState, searchQuery }));
+  dispatch({ type: ACTIONS.SET_SEARCH_QUERY, payload: { searchQuery } });
 };
 
-const setNextActiveSuggestion = (suggestionState, setSuggestionState) => {
-  const { suggestions, activeIndex } = suggestionState;
-  const nextIndex = activeIndex + 1;
-  setSuggestionState((currentState) => ({
-    ...currentState,
-    activeIndex: nextIndex,
-    activeName: suggestions[nextIndex].name,
-  }));
-};
+const nextSuggestionNotOverLimit = (state) =>
+  state.activeSuggestionIndex + 1 < NUMBER_OF_SUGGESTIONS;
 
-const setPreviousActiveSuggestion = (suggestionState, setSuggestionState) => {
-  const { suggestions, activeIndex } = suggestionState;
-  const previousIndex = activeIndex - 1;
-  setSuggestionState((currentState) => ({
-    ...currentState,
-    activeIndex: previousIndex,
-    activeName: suggestions[previousIndex].name,
-  }));
-};
+const previousSuggestionNotUnderZero = (state) => state.activeSuggestionIndex - 1 >= 0;
 
-const nextSuggestionNotOverLimit = (suggestionState) =>
-  suggestionState.activeIndex + 1 < NUMBER_OF_SUGGESTIONS;
-
-const previousSuggestionNotUnderZero = (suggestionState) => suggestionState.activeIndex - 1 >= 0;
-
-const onKeyDown = (event, suggestionState, setSuggestionState, searchState, setSearchState) => {
+const onKeyDown = (event, state, dispatch) => {
   switch (event.keyCode) {
     case KEY_DOWN:
-      if (nextSuggestionNotOverLimit(suggestionState)) {
-        setNextActiveSuggestion(suggestionState, setSuggestionState);
+      if (nextSuggestionNotOverLimit(state)) {
+        dispatch({ type: ACTIONS.NEXT_SUGGESTION });
       }
       break;
     case KEY_UP:
-      if (previousSuggestionNotUnderZero(suggestionState)) {
-        setPreviousActiveSuggestion(suggestionState, setSuggestionState);
+      if (previousSuggestionNotUnderZero(state)) {
+        dispatch({ type: ACTIONS.PREVIOUS_SUGGESTION });
       }
       break;
     case KEY_ENTER:
-      setSearchState((currentState) => ({
-        ...currentState,
-        searchQuery: suggestionState.suggestions[suggestionState.activeIndex].name,
-      }));
+      dispatch({
+        type: ACTIONS.SET_SEARCH_QUERY,
+        payload: { searchQuery: state.suggestions[state.activeSuggestionIndex].name },
+      });
       break;
     default:
       break;
