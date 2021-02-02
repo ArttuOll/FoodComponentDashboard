@@ -3,6 +3,7 @@ import { ACTIONS } from "elements/header/components/search_bar/search_bar_reduce
 
 const NUMBER_OF_SUGGESTIONS = 5;
 const FETCHING_LIMIT = 4;
+// TODO: uudelleennimeä: KEY => ARROW, KEY_ENTER => ENTER
 const KEY_DOWN = 40;
 const KEY_UP = 38;
 const KEY_ENTER = 13;
@@ -40,12 +41,12 @@ const previousSuggestionNotUnderZero = (state) => state.activeSuggestionIndex - 
 const onKeyDown = (event, state, dispatch) => {
   switch (event.keyCode) {
     case KEY_DOWN:
-      if (nextSuggestionNotOverLimit(state)) {
+      if (nextSuggestionNotOverLimit(state) && state.suggestionsVisible) {
         dispatch({ type: ACTIONS.NEXT_SUGGESTION });
       }
       break;
     case KEY_UP:
-      if (previousSuggestionNotUnderZero(state)) {
+      if (previousSuggestionNotUnderZero(state) && state.suggestionsVisible) {
         dispatch({ type: ACTIONS.PREVIOUS_SUGGESTION });
       }
       break;
