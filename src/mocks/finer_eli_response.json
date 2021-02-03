@@ -1,0 +1,458 @@
+[
+  {
+    "food_id": 43,
+    "name": "RUISMALLAS"
+  },
+  {
+    "food_id": 100,
+    "name": "JAUHO, RUISJAUHO, TÄYSJYVÄJAUHO"
+  },
+  {
+    "food_id": 103,
+    "name": "RUISHIUTALE"
+  },
+  {
+    "food_id": 125,
+    "name": "JAUHO, JAUHOSEOS, SÄMPYLÄJAUHO, VEHNÄJAUHO, RUISJAUHO, VEHNÄROUHE"
+  },
+  {
+    "food_id": 176,
+    "name": "ROUHE, RUISROUHE"
+  },
+  {
+    "food_id": 189,
+    "name": "JAUHO, JAUHOSEOS, RUIS-VEHNÄ"
+  },
+  {
+    "food_id": 1000,
+    "name": "RUISVELLI, VESI, RUISJAUHO, SUOLAA"
+  },
+  {
+    "food_id": 1001,
+    "name": "RUISVELLI, MEHU, RUISJAUHO, SUOLAA"
+  },
+  {
+    "food_id": 1002,
+    "name": "RUISPUURO, VESI, RUISJAUHO, SUOLAA"
+  },
+  {
+    "food_id": 1003,
+    "name": "RUISPUURO, MAITO, RUISJAUHO, SUOLAA"
+  },
+  {
+    "food_id": 1005,
+    "name": "RUIS-PERUNAPUURO, VESI, SUOLAA"
+  },
+  {
+    "food_id": 1006,
+    "name": "RUIS-MARJAPUURO, VESI, PUOLUKKA, SOKERI, SUOLAA"
+  },
+  {
+    "food_id": 1007,
+    "name": "RUISPUURO, RUISJAUHO, PUOLUKKA, SOKERITON, SUOLAA"
+  },
+  {
+    "food_id": 1009,
+    "name": "RUISLEIPÄ, PERINTEINEN, VESI, TÄYSJYVÄRUISJAUHO"
+  },
+  {
+    "food_id": 1011,
+    "name": "SEKALEIPÄ, HAPANIMELÄLEIPÄ, PIIMÄ, VEHNÄ-, RUISJAUHO"
+  },
+  {
+    "food_id": 1013,
+    "name": "KARJALANPIIRAKKA, PERINTEINEN, VOIDELTU, RIISI, RUISVEHNÄKUORI"
+  },
+  {
+    "food_id": 1014,
+    "name": "PERUNAPIIRAKKA, RUISKUORI"
+  },
+  {
+    "food_id": 1015,
+    "name": "MARJAPIIRAKKA, RUKIINEN, MARJASURVOS, RUISKUORI"
+  },
+  {
+    "food_id": 1017,
+    "name": "KEITINPIIRAKKA, RIISI, MUNA, RUISKUORI, SULHASPIIRAKKA"
+  },
+  {
+    "food_id": 1022,
+    "name": "LEIPÄPUURO, VESI, PUOLUKKA, MANNASUURIMO, RUISLEIPÄ, SOKERIA, SUOLAA"
+  },
+  {
+    "food_id": 1025,
+    "name": "RUISVELLI, MAITO, RUISHIUTALE, SUOLAA"
+  },
+  {
+    "food_id": 1026,
+    "name": "RUISPUURO, VESI, RUISHIUTALE, SUOLAA"
+  },
+  {
+    "food_id": 1027,
+    "name": "RUISPUURO, MAITO, RUISHIUTALE, SUOLAA"
+  },
+  {
+    "food_id": 1036,
+    "name": "RUISLEIPÄ, RUISTA 51%"
+  },
+  {
+    "food_id": 1111,
+    "name": "SEKALEIPÄ, RIESKA, KEVYTMAITO, VEHNÄ-, RUISJAUHO"
+  },
+  {
+    "food_id": 1330,
+    "name": "RUISLEIPÄ, RUISHIIVALEIPÄ, VESI, RUIS-, HIIVALEIPÄJAUHO"
+  },
+  {
+    "food_id": 1331,
+    "name": "RUISLEIPÄ, RUIS-, HIIVALEIPÄJAUHO, TEOLLINEN"
+  },
+  {
+    "food_id": 1338,
+    "name": "RUISLEIPÄ, RUISROUHELEIPÄ PERUNAINEN, RUISPALAT"
+  },
+  {
+    "food_id": 1341,
+    "name": "SEKALEIPÄ, ROUHELEIPÄ, VESI, VEHNÄJAUHO, RUIS-, VEHNÄROUHE, KAURAHIUTALE"
+  },
+  {
+    "food_id": 1342,
+    "name": "RUISLEIPÄ, TUMMA TÄYSJYVÄLEIPÄ VÄHÄSUOLAINEN"
+  },
+  {
+    "food_id": 1375,
+    "name": "RUIS-RIISISEOS, KEITETTY, SUOLAA"
+  },
+  {
+    "food_id": 1389,
+    "name": "RUIS-VEHNÄ-PERUNATAIKINA"
+  },
+  {
+    "food_id": 1416,
+    "name": "RUISLEIPÄ, MALLASLEIPÄ, SAARISTOLAISLEIPÄ, RUKIINEN"
+  },
+  {
+    "food_id": 1563,
+    "name": "RUISPUURO, VESI, RUISHIUTALE, SUOLATON"
+  },
+  {
+    "food_id": 3014,
+    "name": "LANTTUPIIRAKKA, LANTTUSURVOS, RUISKUORI"
+  },
+  {
+    "food_id": 3015,
+    "name": "HAPANLOHKO, NAURIS, PERUNA, KERMA, RUISJAUHOT"
+  },
+  {
+    "food_id": 7107,
+    "name": "HAMPURILAINEN, RUISHAMPURILAINEN, NAUDANLIHA"
+  },
+  {
+    "food_id": 11006,
+    "name": "RUISLEIPÄ, RUISSIHTILEIPÄ, VESI, RUISSIHTI-, HIIVALEIPÄJAUHO"
+  },
+  {
+    "food_id": 11030,
+    "name": "JAUHO, RUISSIHTIJAUHO"
+  },
+  {
+    "food_id": 11126,
+    "name": "SEKALEIPÄ, VESI, GRAHAM-, RUIS-, VEHNÄJAUHO"
+  },
+  {
+    "food_id": 11522,
+    "name": "RUIS-RIISISEOS, RIISI JA RUISROUHE"
+  },
+  {
+    "food_id": 28909,
+    "name": "MAKARONI, RUISMAKARONI"
+  },
+  {
+    "food_id": 28912,
+    "name": "MAKARONI, RUISMAKARONI, KEITETTY, SUOLAA"
+  },
+  {
+    "food_id": 29237,
+    "name": "LESE, RUISLESE"
+  },
+  {
+    "food_id": 29771,
+    "name": "NÄKKILEIPÄ, RUISNÄKKILEIPÄ, KUITUA 17 %"
+  },
+  {
+    "food_id": 29797,
+    "name": "PAAHTOLEIPÄ, RUISPAAHTOLEIPÄ"
+  },
+  {
+    "food_id": 29800,
+    "name": "SEKALEIPÄ, SÄMPYLÄ, RUISROUHESÄMPYLÄ, VESI"
+  },
+  {
+    "food_id": 29804,
+    "name": "SEKALEIPÄ, VESI, VEHNÄ-, RUISJAUHO, PERUNAHIUTALE"
+  },
+  {
+    "food_id": 29808,
+    "name": "SEKALEIPÄ, RUISSÄMPYLÄ"
+  },
+  {
+    "food_id": 29809,
+    "name": "SEKALEIPÄ, PERUNALIMPPU, VEHNÄ-, RUISJAUHO, PERUNAHIUTALE"
+  },
+  {
+    "food_id": 29811,
+    "name": "RUISLEIPÄ, RUISSEKALEIPÄ"
+  },
+  {
+    "food_id": 29814,
+    "name": "RUISLEIPÄ, VARRASLEIPÄ"
+  },
+  {
+    "food_id": 30171,
+    "name": "HAMPURILAINEN, RUISHAMPURILAINEN, PORSAAN ULKOFILEE"
+  },
+  {
+    "food_id": 30193,
+    "name": "PASTA, MONIVILJAPASTA, VEHNÄ, RUIS, OHRA"
+  },
+  {
+    "food_id": 30350,
+    "name": "RUIS-RIISISEOS, KEITETTY, SUOLATON"
+  },
+  {
+    "food_id": 30360,
+    "name": "MAKARONI, RUISMAKARONI, KEITETTY, SUOLATON"
+  },
+  {
+    "food_id": 31811,
+    "name": "RUISLEIPÄ, REISSUMIES, OULULAINEN, FAZER"
+  },
+  {
+    "food_id": 31812,
+    "name": "RUISLEIPÄ, OULULAINEN REILU RUISLEIPÄ, FAZER"
+  },
+  {
+    "food_id": 31813,
+    "name": "(ARC)RUISLEIPÄ, VILPURI PIKKURUIS TÄYSJYVÄRUISLEIPÄ, FAZER"
+  },
+  {
+    "food_id": 31814,
+    "name": "RUISLEIPÄ, REAL TUMMA TÄYSJYVÄLEIPÄ, FAZER"
+  },
+  {
+    "food_id": 31815,
+    "name": "RUISLEIPÄ, PUIKULA RUIS, FAZER"
+  },
+  {
+    "food_id": 31816,
+    "name": "RUISLEIPÄ, TOSI RUKIINEN, VAASAN"
+  },
+  {
+    "food_id": 31817,
+    "name": "RUISLEIPÄ, JYVÄROUHEA TÄYSJYVÄRUISLEIPÄ, VAASAN"
+  },
+  {
+    "food_id": 31818,
+    "name": "RUISLEIPÄ, RUISSYDÄN, VAASAN, RUIS-, VEHNÄJAUHO"
+  },
+  {
+    "food_id": 31819,
+    "name": "RUISLEIPÄ, 100 % RUIS, HALKAISTU TÄYSJYVÄRUISLEIPÄ, VAASAN"
+  },
+  {
+    "food_id": 31820,
+    "name": "RUISLEIPÄ, RUISPALAT, VAASAN"
+  },
+  {
+    "food_id": 31821,
+    "name": "RUISLEIPÄ, OULULAINEN JÄLKIUUNIPALA, FAZER"
+  },
+  {
+    "food_id": 31822,
+    "name": "RUISLEIPÄ, OULULAINEN JÄLKIUUNILEIPÄ, VÄHEMMÄN SUOLAA, FAZER"
+  },
+  {
+    "food_id": 31823,
+    "name": "RUISLEIPÄ, OULULAINEN JÄLKIUUNIVIIPALEET, FAZER"
+  },
+  {
+    "food_id": 31824,
+    "name": "RUISLEIPÄ, OULULAINEN JÄLKIUUNIVUOKA, FAZER, TÄYSJYVÄRUISJAUHO, -LESE"
+  },
+  {
+    "food_id": 31826,
+    "name": "RUISLEIPÄ, UOTILAN MAALAISRUISLIMPPU, TÄYSJYVÄRUISJAUHO"
+  },
+  {
+    "food_id": 31827,
+    "name": "RUISLEIPÄ, UOTILAN PERUNALIMPPU, TÄYSJYVÄRUIS-, HIIVALEIPÄVEHNÄJAUHO"
+  },
+  {
+    "food_id": 31828,
+    "name": "RUISLEIPÄ, ROVASTINLIMPPU, FAZER, TÄYSJYVÄRUIS-, HIIVALEIPÄVEHNÄJAUHO"
+  },
+  {
+    "food_id": 31829,
+    "name": "RUISLEIPÄ, OULULAINEN RUISLIMPPU, FAZER"
+  },
+  {
+    "food_id": 31830,
+    "name": "RUISLEIPÄ, SAARISTOLAISLEIPÄ, RUKIINEN, SAARISTOLAISPALAT, VAASAN"
+  },
+  {
+    "food_id": 31831,
+    "name": "SEKALEIPÄ, MONIVILJAPATONKI, RUISKUITUA, SIEMENIÄ"
+  },
+  {
+    "food_id": 31834,
+    "name": "PAAHTOLEIPÄ, PAAHTOSÄMPYLÄ RUIS, FAZER"
+  },
+  {
+    "food_id": 31845,
+    "name": "PAAHTOLEIPÄ, RUISPAAHTO, FAZER, VEHNÄJAUHO, RUISKUITU, KAURAKUITU"
+  },
+  {
+    "food_id": 31858,
+    "name": "PAAHTOLEIPÄ, 100 % RUISPAAHTO, VAASAN, RUISJAUHO,-ROUHE,-MALLAS,-KUITU"
+  },
+  {
+    "food_id": 31876,
+    "name": "RUISLEIPÄ, TAIKARUIS 100 % RUISSÄMPYLÄ, VAASAN"
+  },
+  {
+    "food_id": 31880,
+    "name": "RUISLEIPÄ, TAIKARUIS RUISVIIPALE, 100 % RUIS, VAASAN"
+  },
+  {
+    "food_id": 32075,
+    "name": "MURO, RUISMURO, QUAKER FRAS RUIS"
+  },
+  {
+    "food_id": 32472,
+    "name": "SEKALEIPÄ, RUIS-VEHNÄTYYNYT, VAASAN"
+  },
+  {
+    "food_id": 32680,
+    "name": "SOIJA-MARJA-PELLAVA-RUIS-JAUHESEOS, BERRYSOYA"
+  },
+  {
+    "food_id": 32714,
+    "name": "KEKSI, VOILEIPÄKEKSI, RUIS CRACKER, KANTOLAN"
+  },
+  {
+    "food_id": 32814,
+    "name": "SULTSINA, RUISVEHNÄKUORI"
+  },
+  {
+    "food_id": 32819,
+    "name": "PERUNAKUKKO, RUISKUORI"
+  },
+  {
+    "food_id": 32867,
+    "name": "LANTTUKUKKO, RUISKUORI"
+  },
+  {
+    "food_id": 32947,
+    "name": "NÄKKILEIPÄ, TÄYSJYVÄRUIS, PIENI PYÖREÄ/MAUKAS, VAASAN, KUITUA 20 %"
+  },
+  {
+    "food_id": 32949,
+    "name": "NÄKKILEIPÄ, TÄYSJYVÄRUISNÄKKILEIPÄ, KUNTO, VAASAN, RUISLESEITÄ, KUITUA 20 %"
+  },
+  {
+    "food_id": 32960,
+    "name": "SEKALEIPÄ, RUISROUHEVIIPALEET, LEIPÄAITTA, LIDL, VEHNÄJAUHO, RUISJAUHO, -ROUHE"
+  },
+  {
+    "food_id": 32962,
+    "name": "RUISLEIPÄ, RUISPALAT, LEIPÄAITTA, LIDL, TÄYSJYVÄRUIS-VEHNÄJAUHO"
+  },
+  {
+    "food_id": 32964,
+    "name": "RUISLEIPÄ, PERINTEINEN VARRASLEIPÄ, LEIPÄAITTA/LIDL,TÄYSJYVÄRUIS-HIIVALEIPÄJAUHO"
+  },
+  {
+    "food_id": 32965,
+    "name": "RUISLEIPÄ, PYÖREÄT RUISPALASET, LEIPÄAITTA, LIDL, TÄYSJYVÄRUISJAUHO, PERUNAHIUT."
+  },
+  {
+    "food_id": 32981,
+    "name": "NÄKKILEIPÄ, TÄYSJYVÄRUISNÄKKILEIPÄ, RIVERCOTE, LIDL, SIS. MAITOA"
+  },
+  {
+    "food_id": 33217,
+    "name": "RUISLEIPÄ, RUISKAKKO, RUISSÄMPYLÄT, ULLAN PAKARI"
+  },
+  {
+    "food_id": 33220,
+    "name": "RUISLEIPÄ, PERUNAINEN, RUISIISAKKI, PIRJON PAKARI"
+  },
+  {
+    "food_id": 33263,
+    "name": "RUISSIPSI"
+  },
+  {
+    "food_id": 33661,
+    "name": "(ARC)RUISLEIPÄ, AAMIAISLEIPÄ, RUISLEIPÄ, VIIPALOITU, PERHELEIPURIT"
+  },
+  {
+    "food_id": 33665,
+    "name": "RUISLEIPÄ, JYVÄLIMPPU, VIIPALOITU TÄYSJYVÄRUISLEIPÄ, VAASAN"
+  },
+  {
+    "food_id": 33699,
+    "name": "SEKALEIPÄ, RUISVEHNÄSÄMPYLÄ, FAZER"
+  },
+  {
+    "food_id": 34246,
+    "name": "JAUHO, TÄYSJYVÄRUISJAUHO R800"
+  },
+  {
+    "food_id": 34247,
+    "name": "JAUHO, TÄYSJYVÄRUISJAUHO R1000"
+  },
+  {
+    "food_id": 34727,
+    "name": "RUISLEIPÄ, JUURESLEIPÄ, RUIS, KESÄKURPITSA JA PALSTERNAKKA, FAZER"
+  },
+  {
+    "food_id": 34728,
+    "name": "RUISLEIPÄ, VATSAYSTÄVÄLLINEN RUIS, FAZER"
+  },
+  {
+    "food_id": 34822,
+    "name": "RUISLEIPÄ, REISSUMIES, TOSI TUMMA, OULULAINEN, FAZER"
+  },
+  {
+    "food_id": 34833,
+    "name": "RUISLEIPÄ, TAIKARUIS PORKKANAVIIPALE, VAASAN"
+  },
+  {
+    "food_id": 34907,
+    "name": "RIISI-RUISSEOS"
+  },
+  {
+    "food_id": 34908,
+    "name": "RIISI-RUISSEOS, KEITETTY, SUOLAA"
+  },
+  {
+    "food_id": 34951,
+    "name": "KAURA-RUISPUURO, VESI, SUOLAA"
+  },
+  {
+    "food_id": 35094,
+    "name": "RUISLEIPÄ, PERINTEINEN, VESI, TÄYSJYVÄRUISJAUHO, HIIVATON"
+  },
+  {
+    "food_id": 35102,
+    "name": "AROMIRUISMALLAS, VAALEA MALLAS"
+  },
+  {
+    "food_id": 35159,
+    "name": "RUISLEIPÄ, VÄHÄHIILIHYDRAATTINEN, MINIHIILARI RUIS, VAASAN"
+  },
+  {
+    "food_id": 35227,
+    "name": "RUISLEIPÄ, RUISPALAT OHUT HERKKU, VAASAN"
+  }
+]
