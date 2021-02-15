@@ -33,7 +33,7 @@ SearchBox.propTypes = {
   onKeyDown: Proptypes.func.isRequired,
 };
 
-const StyledButton = styled(Button)`
+const SearchButtonStyle = styled(Button)`
   :hover {
     background-color: #4ba227;
   }
@@ -48,12 +48,16 @@ const StyledButton = styled(Button)`
   box-shadow: none;
 `;
 
-const SearchButton = () => {
+const StyledSearchButton = ({ onSearchButtonClick }) => {
   return (
-    <StyledButton className="shadow-none">
+    <SearchButtonStyle className="shadow-none" onClick={onSearchButtonClick}>
       <FontAwesomeIcon icon={faSearch} />
-    </StyledButton>
+    </SearchButtonStyle>
   );
+};
+
+StyledSearchButton.propTypes = {
+  onSearchButtonClick: Proptypes.func.isRequired,
 };
 
 const SuggestionsList = styled(ListGroup)`
@@ -67,4 +71,4 @@ const SuggestionsListItem = styled(ListGroup.Item)`
   color: ${(props) => (props.$activityStatus ? "#ffffff" : "000000")};
 `;
 
-export { SearchButton, SearchBox, SuggestionsList, SuggestionsListItem };
+export { StyledSearchButton, SearchBox, SuggestionsList, SuggestionsListItem };
