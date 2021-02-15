@@ -1,4 +1,4 @@
-import fetchFoodNames from "elements/utils/network_utils";
+import { fetchFoodNames } from "elements/utils/network_utils";
 import { ACTIONS } from "elements/header/components/search_bar/search_bar_reducer";
 
 const NUMBER_OF_SUGGESTIONS = 5;
