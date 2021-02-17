@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import fetchMock from "jest-fetch-mock";
@@ -14,7 +14,9 @@ const FOOD_COMPOSITION_URL = "http://localhost:3001/food/666";
 
 describe("Header", () => {
   const setup = () => {
-    render(<SearchBar />);
+    const foodDataCallback = jest.fn();
+    const errorCallback = jest.fn();
+    render(<SearchBar foodDataCallback={foodDataCallback} errorCallback={errorCallback} />);
     fetch.mockResponse(JSON.stringify(mockResponse));
   };
 
@@ -24,7 +26,7 @@ describe("Header", () => {
   };
 
   test("User can type into search bar", async () => {
-    render(<SearchBar />);
+    setup();
     await writeToSearchBar("ruisleipä");
     const searchBar = screen.getByPlaceholderText("Search for a food...");
     expect(searchBar).toHaveValue("ruisleipä");
@@ -57,15 +59,23 @@ describe("Header", () => {
     expect(screen.queryByText(/puuro/i)).not.toBeInTheDocument();
   });
 
-  // TODO: korjaa virheilmoitus testinäkymässä
   test("API is called when search button clicked", async () => {
+    const foodIdLookupCallback = jest.fn(() => 666);
     const foodDataCallback = jest.fn();
     const errorCallback = jest.fn();
-    render(<SearchButton foodDataCallback={foodDataCallback} errorCallback={errorCallback} />);
-    const searchButton = screen.getByRole("button");
-    userEvent.click(searchButton);
+    render(
+      <SearchButton
+        foodIdLookupCallback={foodIdLookupCallback}
+        foodDataCallback={foodDataCallback}
+        errorCallback={errorCallback}
+      />
+    );
+    await act(async () => {
+      const searchButton = await screen.findByRole("button");
+      userEvent.click(searchButton);
+    });
+
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual(FOOD_COMPOSITION_URL);
-    expect(foodDataCallback).toHaveBeenCalledTimes(1);
   });
 });
