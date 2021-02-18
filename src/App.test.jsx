@@ -25,6 +25,26 @@ describe("Header", () => {
     await userEvent.type(searchBar, input, { delay: 1 });
   };
 
+  const clickSearchButton = async () => {
+    await act(async () => {
+      const searchButton = await screen.findByRole("button");
+      userEvent.click(searchButton);
+    });
+  };
+
+  const renderSearchButton = (foodIdLookupCallbackStub) => {
+    const foodIdLookupCallback = jest.fn(foodIdLookupCallbackStub) || jest.fn();
+    const foodDataCallback = jest.fn();
+    const errorCallback = jest.fn();
+    render(
+      <SearchButton
+        foodIdLookupCallback={foodIdLookupCallback}
+        foodDataCallback={foodDataCallback}
+        errorCallback={errorCallback}
+      />
+    );
+  };
+
   test("User can type into search bar", async () => {
     setup();
     await writeToSearchBar("ruisleipä");
@@ -60,41 +80,15 @@ describe("Header", () => {
   });
 
   test("API is called when search button clicked", async () => {
-    const foodIdLookupCallback = jest.fn(() => 666);
-    const foodDataCallback = jest.fn();
-    const errorCallback = jest.fn();
-    render(
-      <SearchButton
-        foodIdLookupCallback={foodIdLookupCallback}
-        foodDataCallback={foodDataCallback}
-        errorCallback={errorCallback}
-      />
-    );
-    await act(async () => {
-      const searchButton = await screen.findByRole("button");
-      userEvent.click(searchButton);
-    });
-
+    renderSearchButton(() => 666);
+    await clickSearchButton();
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual(FOOD_COMPOSITION_URL);
   });
 
   test("API is not called if search button pressed without search query", async () => {
-    const foodIdLookupCallback = jest.fn();
-    const foodDataCallback = jest.fn();
-    const errorCallback = jest.fn();
-    render(
-      <SearchButton
-        foodIdLookupCallback={foodIdLookupCallback}
-        foodDataCallback={foodDataCallback}
-        errorCallback={errorCallback}
-      />
-    );
-    await act(async () => {
-      const searchButton = await screen.findByRole("button");
-      userEvent.click(searchButton);
-    });
-
+    renderSearchButton();
+    await clickSearchButton();
     expect(fetch.mock.calls.length).toEqual(0);
   });
 });
