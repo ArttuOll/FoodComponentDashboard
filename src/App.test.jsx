@@ -78,4 +78,23 @@ describe("Header", () => {
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual(FOOD_COMPOSITION_URL);
   });
+
+  test("API is not called if search button pressed without search query", async () => {
+    const foodIdLookupCallback = jest.fn();
+    const foodDataCallback = jest.fn();
+    const errorCallback = jest.fn();
+    render(
+      <SearchButton
+        foodIdLookupCallback={foodIdLookupCallback}
+        foodDataCallback={foodDataCallback}
+        errorCallback={errorCallback}
+      />
+    );
+    await act(async () => {
+      const searchButton = await screen.findByRole("button");
+      userEvent.click(searchButton);
+    });
+
+    expect(fetch.mock.calls.length).toEqual(0);
+  });
 });
