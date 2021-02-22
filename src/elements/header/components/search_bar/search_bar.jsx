@@ -1,14 +1,13 @@
 import { React, useState, useEffect, useReducer } from "react";
+import Proptypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import { TextAlert } from "elements/utils/styled_texts";
 import SearchSuggestions from "elements/header/components/search_suggestions";
-import {
-  SearchBox,
-  SearchButton,
-} from "elements/header/components/search_bar/search_bar_styled_components";
+import { SearchBox } from "elements/header/components/search_bar/search_bar_styled_components";
+import SearchButton from "elements/header/components/search_bar/search_button";
 
 import {
   onMouseOver,
@@ -24,7 +23,7 @@ import {
   initialState,
 } from "elements/header/components/search_bar/search_bar_reducer";
 
-const SearchBar = () => {
+const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -52,6 +51,14 @@ const SearchBar = () => {
     setSuggestions();
   }, [state.searchQuery, state.searchResults]);
 
+  const foodIdLookupCallback = () => {
+    return state.searchResults.find((food) => food.name === state.searchQuery).food_id;
+  };
+
+  const setFoodNameToBodyHeader = () => {
+    foodNameCallback(state.searchQuery);
+  };
+
   return (
     <Container>
       <Row className="w-100">
@@ -65,7 +72,12 @@ const SearchBar = () => {
               }
             />
             <InputGroup.Append>
-              <SearchButton />
+              <SearchButton
+                foodIdLookupCallback={foodIdLookupCallback}
+                foodDataCallback={foodDataCallback}
+                errorCallback={setErrorMessage}
+                setFoodNameToBodyHeader={setFoodNameToBodyHeader}
+              />
             </InputGroup.Append>
           </InputGroup>
           {state.suggestionsVisible ? (
@@ -80,6 +92,11 @@ const SearchBar = () => {
       </Row>
     </Container>
   );
+};
+
+SearchBar.propTypes = {
+  foodDataCallback: Proptypes.func.isRequired,
+  foodNameCallback: Proptypes.func.isRequired,
 };
 
 export default SearchBar;
