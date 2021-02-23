@@ -28,14 +28,28 @@ function generateComponentRow(title, data) {
 }
 
 const Body = ({ foodData, foodName }) => {
-  // TODO: erottele näille kuuluvat datat
-  const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", foodData);
-  const VitaminsRow = generateComponentRow("Vitamiinit", foodData);
+  const macroComponentData = foodData.filter((food) => food.component_class === "MACROCMP");
+  const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", macroComponentData);
+
+  const vitaminData = foodData.filter((food) => food.component_class === "VITAM");
+  const VitaminsRow = generateComponentRow("Vitamiinit", vitaminData);
+
+  const mineralData = foodData.filter((food) => food.component_class === "MINERAL");
+  const MineralRow = generateComponentRow("Mineraalit", mineralData);
+
+  const fatData = foodData.filter((food) => food.component_class === "FAT");
+  const FatRow = generateComponentRow("Rasvat", fatData);
+
+  const carbComponentData = foodData.filter((food) => food.component_class === "CARBOCMP");
+  const CarbComponentRow = generateComponentRow("Hiilihydraatit", carbComponentData);
   return (
     <>
       <FoodLabel className="text-center">{foodName}</FoodLabel>
       <MacroComponentsRow />
       <VitaminsRow />
+      <MineralRow />
+      <FatRow />
+      <CarbComponentRow />
     </>
   );
 };
