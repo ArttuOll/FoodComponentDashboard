@@ -1,28 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import ComponentCard from "elements/body/component_card";
 import { FoodLabel, ComponentLabel } from "elements/utils/styled_texts";
+import ComponentCardRow from "elements/body/components/component_card_row";
 
 function generateComponentRow(title, data) {
   return () => (
     <Container>
       <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
-      <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
-        {data.map((componentCard) => (
-          <Col key={componentCard.description} className="d-flex justify-content-center">
-            <ComponentCard
-              key={componentCard.description}
-              title={componentCard.description}
-              unit={componentCard.unit}
-              value={parseInt(componentCard.value, 10)}
-              valueSubtitle={componentCard.valueSubtitle}
-            />
-          </Col>
-        ))}
-      </Row>
+      <ComponentCardRow data={data} />
     </Container>
   );
 }
@@ -42,6 +28,7 @@ const Body = ({ foodData, foodName }) => {
 
   const carbComponentData = foodData.filter((food) => food.component_class === "CARBOCMP");
   const CarbComponentRow = generateComponentRow("Hiilihydraatit", carbComponentData);
+
   return (
     <>
       <FoodLabel className="text-center">{foodName}</FoodLabel>
