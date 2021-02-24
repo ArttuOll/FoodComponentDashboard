@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "1.2.32",
     "@fortawesome/free-solid-svg-icons": "5.15.1",
     "@fortawesome/react-fontawesome": "0.1.14",
+    "jest-fetch-mock": "3.0.3",
     "@testing-library/jest-dom": "5.11.8",
     "@testing-library/react": "11.2.2",
     "@testing-library/user-event": "12.6.0",
@@ -82,7 +83,6 @@
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-testing-library": "3.10.1",
-    "jest-fetch-mock": "3.0.3",
     "prettier": "2.2.1"
   }
 }
