@@ -6,7 +6,7 @@ import { HiglightedValue, TextOk } from "elements/utils/styled_texts";
 const ComponentCard = (props) => {
   const { title, unit, value, valueSubtitle } = props;
   return (
-    <Card className="text-center shadow-sm my-2" style={{ width: "10rem" }}>
+    <Card className="text-center shadow-sm my-2" style={{ width: "25rem" }}>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{unit}</Card.Subtitle>
