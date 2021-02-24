@@ -7,8 +7,12 @@ import ComponentCardRow from "elements/body/components/component_card_row";
 function generateComponentRow(title, data) {
   return () => (
     <Container>
-      <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
-      <ComponentCardRow data={data} />
+      {data.length > 0 ? (
+        <>
+          <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
+          <ComponentCardRow data={data} />
+        </>
+      ) : null}
     </Container>
   );
 }
