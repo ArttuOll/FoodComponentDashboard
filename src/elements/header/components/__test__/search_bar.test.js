@@ -5,7 +5,6 @@ import React from "react";
 import fetchMock from "jest-fetch-mock";
 import SearchBar from "elements/header/components/search_bar/search_bar";
 import SearchButton from "elements/header/components/search_bar/search_button";
-import mockResponse from "./mocks/finer_eli_response.json";
 
 fetchMock.enableMocks();
 
@@ -17,7 +16,6 @@ describe("Header", () => {
     const foodDataCallback = jest.fn();
     const errorCallback = jest.fn();
     render(<SearchBar foodDataCallback={foodDataCallback} errorCallback={errorCallback} />);
-    fetch.mockResponse(JSON.stringify(mockResponse));
   };
 
   const writeToSearchBar = async (input) => {
