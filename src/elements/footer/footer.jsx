@@ -2,9 +2,10 @@ import React from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import BottomStickyFooter from "elements/footer/footer_styled_components";
 
 const Footer = () => (
-  <footer className="border-top mt-5">
+  <BottomStickyFooter className="border-top">
     <Container>
       <Row>
         <Col>
@@ -15,7 +16,7 @@ const Footer = () => (
         </Col>
       </Row>
     </Container>
-  </footer>
+  </BottomStickyFooter>
 );
 
 export default Footer;
