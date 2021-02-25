@@ -15,7 +15,14 @@ describe("Header", () => {
   const setup = () => {
     const foodDataCallback = jest.fn();
     const errorCallback = jest.fn();
-    render(<SearchBar foodDataCallback={foodDataCallback} errorCallback={errorCallback} />);
+    const foodNameCallback = jest.fn();
+    render(
+      <SearchBar
+        foodDataCallback={foodDataCallback}
+        errorCallback={errorCallback}
+        foodNameCallback={foodNameCallback}
+      />
+    );
   };
 
   const writeToSearchBar = async (input) => {
@@ -34,11 +41,13 @@ describe("Header", () => {
     const foodIdLookupCallback = jest.fn(foodIdLookupCallbackStub) || jest.fn();
     const foodDataCallback = jest.fn();
     const errorCallback = jest.fn();
+    const setFoodNameToBodyHeader = jest.fn();
     render(
       <SearchButton
         foodIdLookupCallback={foodIdLookupCallback}
         foodDataCallback={foodDataCallback}
         errorCallback={errorCallback}
+        setFoodNameToBodyHeader={setFoodNameToBodyHeader}
       />
     );
   };
