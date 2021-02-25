@@ -17,6 +17,7 @@ const StyledFormControl = styled(FormControl)`
 const SearchBox = ({ onSearchInputChanged, searchQuery, onKeyDown }) => {
   return (
     <StyledFormControl
+      aria-label="Search box"
       onChange={onSearchInputChanged}
       className="shadow-none"
       type="text"
@@ -50,7 +51,11 @@ const SearchButtonStyle = styled(Button)`
 
 const StyledSearchButton = ({ onSearchButtonClick }) => {
   return (
-    <SearchButtonStyle className="shadow-none" onClick={onSearchButtonClick}>
+    <SearchButtonStyle
+      aria-label="Get food components"
+      className="shadow-none"
+      onClick={onSearchButtonClick}
+    >
       <FontAwesomeIcon icon={faSearch} />
     </SearchButtonStyle>
   );
