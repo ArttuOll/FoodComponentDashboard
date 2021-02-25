@@ -2,7 +2,22 @@ import React from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ComponentCard from "elements/body/components/component_card";
+import Container from "react-bootstrap/Container";
 import PropTypes from "prop-types";
+import { ComponentLabel } from "elements/utils/styled_texts";
+
+function generateComponentRow(title, data) {
+  return () => (
+    <Container>
+      {data.length > 0 ? (
+        <>
+          <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
+          <ComponentCardRow data={data} />
+        </>
+      ) : null}
+    </Container>
+  );
+}
 
 const ComponentCardRow = ({ data }) => {
   return (
@@ -28,9 +43,8 @@ ComponentCardRow.propTypes = {
       description: PropTypes.string.isRequired,
       unit: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired,
-      valueSubtitle: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
 
-export default ComponentCardRow;
+export { ComponentCardRow, generateComponentRow };

@@ -1,36 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Container from "react-bootstrap/Container";
-import { FoodLabel, ComponentLabel } from "elements/utils/styled_texts";
-import ComponentCardRow from "elements/body/components/component_card_row";
+import { FoodLabel } from "elements/utils/styled_texts";
+import { generateComponentRow } from "elements/body/components/component_card_row";
 
-function generateComponentRow(title, data) {
-  return () => (
-    <Container>
-      {data.length > 0 ? (
-        <>
-          <ComponentLabel className="my-3 text-break">{title}</ComponentLabel>
-          <ComponentCardRow data={data} />
-        </>
-      ) : null}
-    </Container>
-  );
+function filterFoodDataByComponentClass(foodData, componentClass) {
+  return foodData.filter((food) => food.component_class === `${componentClass}`);
 }
 
 const Body = ({ foodData, foodName }) => {
-  const macroComponentData = foodData.filter((food) => food.component_class === "MACROCMP");
+  const macroComponentData = filterFoodDataByComponentClass(foodData, "MACROCMP");
   const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", macroComponentData);
 
-  const vitaminData = foodData.filter((food) => food.component_class === "VITAM");
+  const vitaminData = filterFoodDataByComponentClass(foodData, "VITAM");
   const VitaminsRow = generateComponentRow("Vitamiinit", vitaminData);
 
-  const mineralData = foodData.filter((food) => food.component_class === "MINERAL");
+  const mineralData = filterFoodDataByComponentClass(foodData, "MINERAL");
   const MineralRow = generateComponentRow("Mineraalit", mineralData);
 
-  const fatData = foodData.filter((food) => food.component_class === "FAT");
+  const fatData = filterFoodDataByComponentClass(foodData, "FAT");
   const FatRow = generateComponentRow("Rasvat", fatData);
 
-  const carbComponentData = foodData.filter((food) => food.component_class === "CARBOCMP");
+  const carbComponentData = filterFoodDataByComponentClass(foodData, "CARBOCMP");
   const CarbComponentRow = generateComponentRow("Hiilihydraatit", carbComponentData);
 
   return (
