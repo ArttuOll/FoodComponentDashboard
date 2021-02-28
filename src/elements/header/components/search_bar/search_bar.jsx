@@ -23,20 +23,19 @@ import {
   initialState,
 } from "elements/header/components/search_bar/search_bar_reducer";
 
+/**
+ * Sovelluksen yläpalkin hakupalkki.
+ *
+ * Sisältää hakukentän, hakunapin sekä hakuehdotukset.
+ */
 const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [errorMessage, setErrorMessage] = useState("");
 
+  /*
+   * Laukeaa aina, kun käyttäjä syöttää tekstiä hakukenttään. Valitsee näytettävät hakuehdotukset.
+   */
   useEffect(() => {
-    const setSuggestionVisibility = () => {
-      const suggestionsVisible = state.searchQuery.length >= NUMBER_OF_SUGGESTIONS;
-      if (suggestionsVisible) {
-        dispatch({ type: ACTIONS.SHOW_SUGGESTIONS });
-      } else {
-        dispatch({ type: ACTIONS.HIDE_SUGGESTIONS });
-      }
-    };
-
     const setSuggestions = () => {
       const filteredSearchResults = state.searchResults
         .filter((suggestion) =>
@@ -47,12 +46,11 @@ const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
       dispatch({ type: ACTIONS.SET_SUGGESTIONS, payload: { suggestions: filteredSearchResults } });
     };
 
-    setSuggestionVisibility();
     setSuggestions();
   }, [state.searchQuery, state.searchResults]);
 
   const foodIdLookupCallback = () => {
-    return state.searchResults.find((food) => food.name === state.searchQuery).food_id;
+    return state.searchResults.find((food) => food.name === state.searchQuery)?.food_id;
   };
 
   const setFoodNameToBodyHeader = () => {
@@ -95,7 +93,11 @@ const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
 };
 
 SearchBar.propTypes = {
+  /** Takaisinkutsufunktio, joka asettaa ruoan komponenttidatan sovelluksen ylätason eli
+   * App-komponentin tilamuuttujaan */
   foodDataCallback: Proptypes.func.isRequired,
+  /** Takaisinkutsufunktio, joka asettaa ruoan nimen sovelluksen ylätason eli
+   * App-komponentin tilamuuttujaan */
   foodNameCallback: Proptypes.func.isRequired,
 };
 
