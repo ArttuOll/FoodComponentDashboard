@@ -50,7 +50,10 @@ const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
   }, [state.searchQuery, state.searchResults]);
 
   const foodIdLookupCallback = () => {
-    return state.searchResults.find((food) => food.name === state.searchQuery)?.food_id;
+    const food = state.searchResults.find(
+      (searchResult) => searchResult.name === state.searchQuery
+    );
+    return food ? food.food_id : null;
   };
 
   const setFoodNameToBodyHeader = () => {
