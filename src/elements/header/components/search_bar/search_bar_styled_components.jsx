@@ -49,6 +49,9 @@ const SearchButtonStyle = styled(Button)`
   box-shadow: none;
 `;
 
+/**
+ * Tyylitelty nappi, joka sisältää hakukuvakkeen.
+ */
 const StyledSearchButton = ({ onSearchButtonClick }) => {
   return (
     <SearchButtonStyle
@@ -62,6 +65,8 @@ const StyledSearchButton = ({ onSearchButtonClick }) => {
 };
 
 StyledSearchButton.propTypes = {
+  /** Takaisinkutsufunktio, jota kutsutaan, kun hakupainiketta painetaan. Laukaisee API-kutsun
+   * ruoan komponenttien hakemiseksi. */
   onSearchButtonClick: Proptypes.func.isRequired,
 };
 

@@ -3,10 +3,9 @@ import { ACTIONS } from "elements/header/components/search_bar/search_bar_reduce
 
 const NUMBER_OF_SUGGESTIONS = 5;
 const NUMBER_OF_CHARS_BEFORE_FETCHING = 3;
-// TODO: uudelleennimeä: KEY => ARROW, KEY_ENTER => ENTER
-const KEY_DOWN = 40;
-const KEY_UP = 38;
-const KEY_ENTER = 13;
+const ARROW_DOWN = 40;
+const ARROW_UP = 38;
+const ENTER = 13;
 
 const onMouseOver = (event, state, dispatch) => {
   const activeSuggestionName = event.target.innerText;
@@ -44,13 +43,13 @@ const onSearchSuggestionClick = (event, dispatch) => {
   dispatch({ type: ACTIONS.SELECT_SUGGESTION, payload: { searchQuery } });
 };
 
-const nextSuggestionIndexNotOverflowing = (state) =>
-  state.activeSuggestionIndex + 1 < NUMBER_OF_SUGGESTIONS;
-
 const previousSuggestionIndexNotUnderZero = (state) => state.activeSuggestionIndex - 1 >= 0;
 
 const userHasActivatedASuggestion = (state) =>
   state.activeSuggestionIndex > -1 && state.suggestionsVisible;
+
+const nextSuggestionIndexNotOverflowing = (state) =>
+  state.activeSuggestionIndex + 1 < NUMBER_OF_SUGGESTIONS;
 
 const arrowDownAllowed = (state) =>
   state.suggestions.length > 0 &&
@@ -62,17 +61,17 @@ const arrowUpAllowed = (state) =>
 
 const onKeyDown = (event, state, dispatch) => {
   switch (event.keyCode) {
-    case KEY_DOWN:
+    case ARROW_DOWN:
       if (arrowDownAllowed(state)) {
         dispatch({ type: ACTIONS.NEXT_SUGGESTION });
       }
       break;
-    case KEY_UP:
+    case ARROW_UP:
       if (arrowUpAllowed(state)) {
         dispatch({ type: ACTIONS.PREVIOUS_SUGGESTION });
       }
       break;
-    case KEY_ENTER:
+    case ENTER:
       if (userHasActivatedASuggestion(state)) {
         dispatch({
           type: ACTIONS.SELECT_SUGGESTION,

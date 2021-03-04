@@ -4,6 +4,9 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import BottomStickyFooter from "elements/footer/footer_styled_components";
 
+/**
+ * Sovelluksen alaviite. Sisältää ainoastaan lisenssitiedot tekstinä.
+ */
 const Footer = () => (
   <BottomStickyFooter className="border-top">
     <Container>

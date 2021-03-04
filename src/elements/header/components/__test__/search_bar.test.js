@@ -8,7 +8,7 @@ import SearchButton from "elements/header/components/search_bar/search_button";
 
 fetchMock.enableMocks();
 
-const FOOD_NAME_URL = "http://localhost:3001/food/?q=ruis";
+const FOOD_NAME_URL = "http://localhost:3001/food/?q=rui";
 const FOOD_COMPOSITION_URL = "http://localhost:3001/food/666";
 
 describe("Header", () => {
@@ -59,29 +59,36 @@ describe("Header", () => {
     expect(searchBar).toHaveValue("ruisleipä");
   });
 
-  test("API is called when user types more than 4 characters", async () => {
+  test("API is called when user types more than 3 characters", async () => {
     setup();
-    await writeToSearchBar("ruisl");
+    await writeToSearchBar("ruis");
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual(FOOD_NAME_URL);
   });
 
-  test("API is not called when user types 4 or less characters", async () => {
+  test("API is not called when user types 3 or less characters", async () => {
     setup();
-    await writeToSearchBar("ruis");
+    await writeToSearchBar("rui");
     expect(fetch.mock.calls.length).toEqual(0);
   });
 
-  test("Nothing happens when downarrow pressed when 4 or less characters typed", async () => {
+  test("Nothing happens when downarrow pressed when 3 or less characters typed", async () => {
     setup();
-    await writeToSearchBar("ruis{arrowdown}");
+    await writeToSearchBar("rui{arrowdown}");
     expect(fetch.mock.calls.length).toEqual(0);
     expect(screen.queryByText(/puuro/i)).not.toBeInTheDocument();
   });
 
-  test("Nothing happens when uparrow pressed when 4 or less characters typed", async () => {
+  test("Nothing happens when uparrow pressed when 3 or less characters typed", async () => {
     setup();
-    await writeToSearchBar("ruis{arrowup}");
+    await writeToSearchBar("rui{arrowup}");
+    expect(fetch.mock.calls.length).toEqual(0);
+    expect(screen.queryByText(/puuro/i)).not.toBeInTheDocument();
+  });
+
+  test("Nothing happens when enter pressed when 3 or less characters typed", async () => {
+    setup();
+    await writeToSearchBar("{enter}");
     expect(fetch.mock.calls.length).toEqual(0);
     expect(screen.queryByText(/puuro/i)).not.toBeInTheDocument();
   });

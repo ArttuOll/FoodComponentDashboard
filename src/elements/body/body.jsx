@@ -7,6 +7,10 @@ function filterFoodDataByComponentClass(foodData, componentClass) {
   return foodData.filter((food) => food.component_class === `${componentClass}`);
 }
 
+/**
+ * Sovelluksen runko-osa. Sisältää ruoan nimen, ravintoainekomponettien kortit sekä korttien
+ * otsakkeen.
+ */
 const Body = ({ foodData, foodName }) => {
   const macroComponentData = filterFoodDataByComponentClass(foodData, "MACROCMP");
   const MacroComponentsRow = generateComponentRow("Energiaravintoaineet", macroComponentData);
@@ -38,13 +42,19 @@ const Body = ({ foodData, foodName }) => {
 Body.propTypes = {
   foodData: PropTypes.arrayOf(
     PropTypes.shape({
-      description: PropTypes.string.isRequired,
+      /** Sen ruoan id, johon tämä ravintoainekomponentti liittyy */
       foodid: PropTypes.number.isRequired,
+      /** Tämä on tietokannan sarakenimi komponentin nimelle */
+      description: PropTypes.string.isRequired,
+      /** Ravintoainekomponentin arvon yksikkö */
       unit: PropTypes.string.isRequired,
+      /** Ravintoainekomponentin yksikön lyhenne */
       unit_abbrev: PropTypes.string.isRequired,
+      /** Ravintoainekomponentin arvo */
       value: PropTypes.number.isRequired,
     })
   ).isRequired,
+  /** Haetun ruoan nimi */
   foodName: PropTypes.string.isRequired,
 };
 

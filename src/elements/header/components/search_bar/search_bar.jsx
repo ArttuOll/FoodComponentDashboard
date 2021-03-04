@@ -26,7 +26,8 @@ import {
 /**
  * Sovelluksen yläpalkin hakupalkki.
  *
- * Sisältää hakukentän, hakunapin sekä hakuehdotukset.
+ * Sisältää hakukentän, hakunapin sekä hakuehdotukset. Hakuehdotukset näytetään, tilamuuttujan
+ * suggestionsVisible (boolean) perusteella.
  */
 const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

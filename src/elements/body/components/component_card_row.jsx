@@ -19,6 +19,10 @@ function generateComponentRow(title, data) {
   );
 }
 
+/**
+ * Rivi ravintoainekomponentin sisältäviä kortteja (ComponentCard-komponentteja). Täysin
+ * responsiivinen.
+ */
 const ComponentCardRow = ({ data }) => {
   return (
     <Row xs={1} sm={2} md={4} style={{ backgroundColor: "#F4F4F4" }}>
@@ -40,8 +44,11 @@ const ComponentCardRow = ({ data }) => {
 ComponentCardRow.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
+      /** Ravintoainekomponentin nimi */
       description: PropTypes.string.isRequired,
+      /** Ravintoainekomponentin yksikkö */
       unit: PropTypes.string.isRequired,
+      /** Ravintoainekomponentin arvo */
       value: PropTypes.number.isRequired,
     })
   ).isRequired,
