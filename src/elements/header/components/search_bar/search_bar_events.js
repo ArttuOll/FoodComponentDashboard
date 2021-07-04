@@ -7,25 +7,25 @@ const ARROW_DOWN = 40;
 const ARROW_UP = 38;
 const ENTER = 13;
 
-const onMouseOver = (event, state, dispatch) => {
+function onMouseOver(event, state, dispatch) {
   const activeSuggestionName = event.target.innerText;
   dispatch({ type: ACTIONS.SET_ACTIVE_SUGGESTION, payload: { activeSuggestionName } });
-};
+}
 
-const setSuggestionVisibility = (state, dispatch) => {
+function setSuggestionVisibility(state, dispatch) {
   const suggestionsVisible = state.searchQuery.length > NUMBER_OF_CHARS_BEFORE_FETCHING;
   if (suggestionsVisible) {
     dispatch({ type: ACTIONS.SHOW_SUGGESTIONS });
   } else {
     dispatch({ type: ACTIONS.HIDE_SUGGESTIONS });
   }
-};
+}
 
-const fetchingAllowed = (searchQuery, fetchingQuery) => {
+function fetchingAllowed(searchQuery, fetchingQuery) {
   return searchQuery.length === NUMBER_OF_CHARS_BEFORE_FETCHING && searchQuery !== fetchingQuery;
-};
+}
 
-const onSearchInputChanged = (event, state, dispatch, setErrorMessage) => {
+function onSearchInputChanged(event, state, dispatch, setErrorMessage) {
   event.preventDefault();
   dispatch({ type: ACTIONS.SET_SEARCH_QUERY, payload: { searchQuery: event.target.value } });
 
@@ -36,30 +36,38 @@ const onSearchInputChanged = (event, state, dispatch, setErrorMessage) => {
   }
 
   setSuggestionVisibility(state, dispatch);
-};
+}
 
-const onSearchSuggestionClick = (event, dispatch) => {
+function onSearchSuggestionClick(event, dispatch) {
   const searchQuery = event.currentTarget.innerText;
   dispatch({ type: ACTIONS.SELECT_SUGGESTION, payload: { searchQuery } });
-};
+}
 
-const previousSuggestionIndexNotUnderZero = (state) => state.activeSuggestionIndex - 1 >= 0;
+function previousSuggestionIndexNotUnderZero(state) {
+  return state.activeSuggestionIndex - 1 >= 0;
+}
 
-const userHasActivatedASuggestion = (state) =>
-  state.activeSuggestionIndex > -1 && state.suggestionsVisible;
+function userHasActivatedASuggestion(state) {
+  return state.activeSuggestionIndex > -1 && state.suggestionsVisible;
+}
 
-const nextSuggestionIndexNotOverflowing = (state) =>
-  state.activeSuggestionIndex + 1 < NUMBER_OF_SUGGESTIONS;
+function nextSuggestionIndexNotOverflowing(state) {
+  return state.activeSuggestionIndex + 1 < NUMBER_OF_SUGGESTIONS;
+}
 
-const arrowDownAllowed = (state) =>
-  state.suggestions.length > 0 &&
-  nextSuggestionIndexNotOverflowing(state) &&
-  state.suggestionsVisible;
+function arrowDownAllowed(state) {
+  return (
+    state.suggestions.length > 0 &&
+    nextSuggestionIndexNotOverflowing(state) &&
+    state.suggestionsVisible
+  );
+}
 
-const arrowUpAllowed = (state) =>
-  previousSuggestionIndexNotUnderZero(state) && state.suggestionsVisible;
+function arrowUpAllowed(state) {
+  return previousSuggestionIndexNotUnderZero(state) && state.suggestionsVisible;
+}
 
-const onKeyDown = (event, state, dispatch) => {
+function onKeyDown(event, state, dispatch) {
   switch (event.keyCode) {
     case ARROW_DOWN:
       if (arrowDownAllowed(state)) {
@@ -85,7 +93,7 @@ const onKeyDown = (event, state, dispatch) => {
     default:
       break;
   }
-};
+}
 
 export {
   onMouseOver,
