@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useReducer } from "react";
+import { ifElse, cond } from "rambda";
 import Proptypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -54,7 +55,7 @@ const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
     const food = state.searchResults.find(
       (searchResult) => searchResult.name === state.searchQuery
     );
-    return food ? food.food_id : null;
+    return ifElse(food, null);
   };
 
   const setFoodNameToBodyHeader = () => {
@@ -82,13 +83,16 @@ const SearchBar = ({ foodDataCallback, foodNameCallback }) => {
               />
             </InputGroup.Append>
           </InputGroup>
-          {state.suggestionsVisible ? (
-            <SearchSuggestions
-              onClick={(event) => onSearchSuggestionClick(event, dispatch)}
-              onMouseOver={(event) => onMouseOver(event, state, dispatch)}
-              state={state}
-            />
-          ) : null}
+          {cond([
+            [
+              state.suggestionsVisible,
+              <SearchSuggestions
+                onClick={(event) => onSearchSuggestionClick(event, dispatch)}
+                onMouseOver={(event) => onMouseOver(event, state, dispatch)}
+                state={state}
+              />,
+            ],
+          ])}
         </Col>
         <TextAlert>{errorMessage}</TextAlert>
       </Row>

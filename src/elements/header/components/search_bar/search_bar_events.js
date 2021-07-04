@@ -1,5 +1,6 @@
 import { fetchFoodNames } from "elements/utils/network_utils";
 import { ACTIONS } from "elements/header/components/search_bar/search_bar_reducer";
+import { path } from "rambda";
 
 const NUMBER_OF_SUGGESTIONS = 5;
 const NUMBER_OF_CHARS_BEFORE_FETCHING = 3;
@@ -7,8 +8,12 @@ const ARROW_DOWN = 40;
 const ARROW_UP = 38;
 const ENTER = 13;
 
+function getEventInnerText() {
+  return path(["target", "innerText"]);
+}
+
 function onMouseOver(event, state, dispatch) {
-  const activeSuggestionName = event.target.innerText;
+  const activeSuggestionName = getEventInnerText(event);
   dispatch({ type: ACTIONS.SET_ACTIVE_SUGGESTION, payload: { activeSuggestionName } });
 }
 
